@@ -128,6 +128,10 @@ URL=http://downloads.sourceforge.net/project/strace/strace/4.5.18/strace-4.5.18.
 SHA1=50081a7201dc240299396f088abe53c07de98e4c \
 download || dienow
 
+URL=http://ftp.gnu.org/gnu/gdb/gdb-7.0.tar.bz2 \
+SHA1=8aed621b7ddb8c82b6ff213b56c028787db90582 \
+download || dienow
+
 echo === Got all source.
 
 cleanup_oldfiles
