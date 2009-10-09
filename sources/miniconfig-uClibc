@@ -61,5 +61,7 @@ UCLIBC_HAS_GNU_GLOB=y
 UCLIBC_BUILD_RELRO=y
 UCLIBC_BUILD_NOEXECSTACK=y
 UCLIBC_EXTRA_CFLAGS="-msoft-float"
+# needed to provide functionality of libiconv
+# this will also select wide character support 
 UCLIBC_HAS_LOCALE=y
 DOSTRIP=y
