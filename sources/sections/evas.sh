@@ -3,8 +3,7 @@ setupfor evas
 [ ! -e ./configure ] && NOCONFIGURE=y ./autogen.sh
 
 # depends on freetype
-# needs libpng for elementary themes
-# we build with libjpeg because it's already there as dependenci of eet
+# we build with libjpeg because it's already there as dependency of eet
 
 LDFLAGS="$CROSS_LDFLAGS $LDFLAGS" CFLAGS="$CROSS_CFLAGS $CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
 	--enable-fb \
@@ -24,7 +23,7 @@ LDFLAGS="$CROSS_LDFLAGS $LDFLAGS" CFLAGS="$CROSS_CFLAGS $CFLAGS" ./configure $CR
 	--enable-image-loader-eet \
 	--disable-image-loader-edb \
 	--disable-image-loader-gif \
-	--enable-image-loader-png \
+	--disable-image-loader-png \
 	--disable-image-loader-pmaps \
 	--enable-image-loader-jpeg \
 	--disable-image-loader-tiff \
@@ -70,6 +69,8 @@ make &&
 make DESTDIR="$STAGING_DIR" install || dienow
 
 install_shared_library evas
+# delete all savers because we don't need them
+rm -rf "$ROOT_DIR/usr/lib/evas/modules/savers"
 
 pkgconfig_fixup_prefix evas
 libtool_fixup_libdir evas
