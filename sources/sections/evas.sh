@@ -3,9 +3,17 @@ setupfor evas
 [ ! -e ./configure ] && NOCONFIGURE=y ./autogen.sh
 
 # depends on freetype
+#
 # we build with libjpeg because it's already there as dependency of eet
+#
+# evas doesn't seem to like certain compiler flags. For example it segfaults
+# in evas_object_color_set when compiled with:
+#
+#   -Os -pipe -march=armv4t -mtune=arm9tdmi
+#
+# we therefore ignore the global $CFLAGS and just use $CFLAGS_HEADERS here. 
 
-LDFLAGS="$CROSS_LDFLAGS $LDFLAGS" CFLAGS="$CROSS_CFLAGS $CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
+LDFLAGS="$CROSS_LDFLAGS $LDFLAGS" CFLAGS="$CFLAGS_HEADERS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
 	--enable-fb \
 	--disable-directfb \
 	--disable-sdl \
