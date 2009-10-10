@@ -24,8 +24,10 @@ export STAGING_DIR="${TOP}/staging-dir"
 # This is taken care of by a gcc wrapper script which passes things 
 # like -nostdinc -nostdlibs -nodefaultlibs to gcc. 
 
-CFLAGS="-I$STAGING_DIR/usr/include -Os -pipe -march=armv4t -mtune=arm9tdmi"
-LDFLAGS="-L$STAGING_DIR/usr/lib"
+CFLAGS_HEADERS="-I$STAGING_DIR/usr/include" 
+CFLAGS="$CFLAGS_HEADERS -Os -pipe -march=armv4t -mtune=arm9tdmi"
+LDFLAGS_LIBS="-L$STAGING_DIR/usr/lib"
+LDFLAGS="$LDFLAGS_LIBS"
 
 # Make sure that pkg-config uses the right paths and doesn't pull
 # in depencies from the host system.
