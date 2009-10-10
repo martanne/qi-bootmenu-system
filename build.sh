@@ -53,7 +53,6 @@ build_section busybox
 build_section kexec-tools
 build_section zlib
 build_section libjpeg
-build_section libpng
 build_section tslib
 build_section freetype
 build_section eina
