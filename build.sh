@@ -24,6 +24,7 @@ if [ $# -eq 0 ]
 then
   rm -f "$TOP/initramfs-files"
   blank_tempdir "$STAGING_DIR"
+  ln -s "usr/lib" "$STAGING_DIR/lib"
   blank_tempdir "$ROOT_DIR"
 fi
 
