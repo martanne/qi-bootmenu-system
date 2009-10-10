@@ -1,0 +1,30 @@
+--- uClibc/extra/locale/Makefile.in	2008-11-11 12:05:57.000000000 +0100
++++ uClibc-patched/extra/locale/Makefile.in	2009-10-10 12:06:11.000000000 +0200
+@@ -92,7 +92,7 @@
+ $(locale_OUT)/codesets.txt:
+ 	@$(disp_gen)
+ ifeq ($(UCLIBC_BUILD_MINIMAL_LOCALE),y)
+-	$(Q)echo "charmaps/ASCII.pairs" > $@ ; \
++	$(Q)echo "charmaps/ASCII.pairs" > $@ ; 
+ 	$(Q)echo "charmaps/ISO-8859-1.pairs" >> $@
+ else
+ 	$(Q)(cd $(locale_DIR)/ && find charmaps/ -name '*.pairs' | sort ) > $@
+@@ -103,12 +103,12 @@
+ $(locale_OUT)/locales.txt: $(locale_DIR)/LOCALES
+ 	@$(disp_gen)
+ ifeq ($(UCLIBC_BUILD_MINIMAL_LOCALE),y)
+-	$(Q)echo "@euro e" > $@ ; \
+-	$(Q)echo "#-" >> $@ ; \
+-	$(Q)echo "UTF-8 yes" >> $@ ; \
+-	$(Q)echo "8-BIT yes" >> $@ ; \
+-	$(Q)echo "#-" >> $@ ; \
+-	$(Q)echo "en_US.UTF-8 UTF-8" >> $@ ; \
++	$(Q)echo "@euro e" > $@ ; 
++	$(Q)echo "#-" >> $@ ; 
++	$(Q)echo "UTF-8 yes" >> $@ ; 
++	$(Q)echo "8-BIT yes" >> $@ ; 
++	$(Q)echo "#-" >> $@ ; 
++	$(Q)echo "en_US.UTF-8 UTF-8" >> $@ ; 
+ 	$(Q)echo "en_US ISO-8859-1" >> $@
+ else
+ 	$(Q)cat $< > $@

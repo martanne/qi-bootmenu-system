@@ -4,21 +4,32 @@ setupfor uClibc
 make CROSS="$CROSS" KCONFIG_ALLCONFIG="$SOURCES/miniconfig-uClibc" allnoconfig &&
 cp .config "$SOURCES/config-uClibc" || dienow
 
-# Alas, if we feed install and install_utils to make at the same time with
-# -j > 1, it dies.  Not SMP safe.
-for i in install install_utils
-do
-  make CROSS="$CROSS" KERNEL_HEADERS="$STAGING_DIR/usr/include" \
-       PREFIX="$STAGING_DIR/usr" $VERBOSITY \
-       RUNTIME_PREFIX="/" DEVEL_PREFIX="/" \
-       UCLIBC_LDSO_NAME=ld-uClibc -j $CPUS $i || dienow
-done
+UCLIBC_MAKE_FLAGS="CROSS=$CROSS KERNEL_HEADERS=$STAGING_DIR/usr/include \
+	RUNTIME_PREFIX=/ UCLIBC_LDSO_NAME=ld-uClibc $VERBOSITY"
 
-make CROSS="$CROSS" KERNEL_HEADERS="$STAGING_DIR/usr/include" \
-     PREFIX="$ROOT_DIR" RUNTIME_PREFIX="/" \
-     UCLIBC_LDSO_NAME=ld-uClibc V=1 install_runtime
+# prepare the headers files this is a pre requirement for locale generation
 
-#cd ..
+make $UCLIBC_MAKE_FLAGS PREFIX="$STAGING_DIR/usr" DEVEL_PREFIX="/" headers
+make $UCLIBC_MAKE_FLAGS PREFIX="$STAGING_DIR/usr" DEVEL_PREFIX="/" include/bits/sysnum.h 
+
+# configure/generate just the minimal needed locales
+# UCLIBC_BUILD_MINIMAL_LOCALE doesn't seem to be present
+# in the Kconfig files but it is nevertheless used in the
+# Makefile
+
+cd extra/locale
+make clean
+make $UCLIBC_MAKE_FLAGS PREFIX="$STAGING_DIR/usr" UCLIBC_BUILD_MINIMAL_LOCALE=y DEVEL_PREFIX="/"
+cd - >/dev/null
+
+# build and install into $STAGING_DIR
+
+make $UCLIBC_MAKE_FLAGS PREFIX="$STAGING_DIR/usr" DEVEL_PREFIX="/" -j $CPUS install
+make $UCLIBC_MAKE_FLAGS PREFIX="$STAGING_DIR/usr" DEVEL_PREFIX="/" -j $CPUS install_utils
+
+# install into $ROOT_DIR 
+
+make $UCLIBC_MAKE_FLAGS PREFIX="$ROOT_DIR" install_runtime
 
 [ -e "$STAGING_DIR/usr/lib/libc.so" ] && cp "$STAGING_DIR/usr/lib/libc.so" \
 	"$ROOT_DIR/lib/libc.so" 
