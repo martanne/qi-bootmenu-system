@@ -1,8 +1,8 @@
 # Build and install uClibc.
 
 setupfor uClibc
-make CROSS="$CROSS" KCONFIG_ALLCONFIG="$SOURCES/miniconfig-uClibc" allnoconfig &&
-cp .config "$SOURCES/config-uClibc" || dienow
+make CROSS="$CROSS" KCONFIG_ALLCONFIG="$CONFIG_DIR/miniconfig-uClibc" allnoconfig &&
+cp .config "$CONFIG_DIR/config-uClibc" || dienow
 
 UCLIBC_MAKE_FLAGS="CROSS=$CROSS KERNEL_HEADERS=$STAGING_DIR/usr/include \
 	RUNTIME_PREFIX=/ UCLIBC_LDSO_NAME=ld-uClibc $VERBOSITY"

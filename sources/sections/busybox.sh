@@ -1,8 +1,8 @@
 # Build and install busybox
 
 setupfor busybox
-make allnoconfig KCONFIG_ALLCONFIG="$SOURCES/miniconfig-busybox" &&
-cp .config "$SOURCES/config-busybox" &&
+make allnoconfig KCONFIG_ALLCONFIG="$CONFIG_DIR/miniconfig-busybox" &&
+cp .config "$CONFIG_DIR/config-busybox" &&
 LDFLAGS="$CROSS_LDFLAGS $LDFLAGS" make -j $CPUS CROSS_COMPILE="$CROSS" $VERBOSITY &&
 make busybox.links &&
 cp busybox "$ROOT_DIR/usr/bin"
