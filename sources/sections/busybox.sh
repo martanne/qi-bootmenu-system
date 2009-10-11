@@ -16,6 +16,4 @@ do
 done
 cd ..
 
-ln -s ash "$ROOT_DIR/usr/bin/sh" 
-
 cleanup busybox
