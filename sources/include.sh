@@ -10,6 +10,7 @@ STAGE_NAME="native"
 # Directory layout
 TOP=`pwd`
 export SOURCES="${TOP}/sources"
+export SCRIPTS="${SOURCES}/scripts"
 export SRCDIR="${TOP}/packages"
 export ROOT_DIR="${TOP}/rootfs"
 export ROOT_OVERLAY="${TOP}/rootfs-overlay"

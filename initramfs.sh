@@ -17,7 +17,7 @@ find "$ROOT_DIR/usr/lib" -name '*.so' | xargs ${STRIP} --strip-unneeded 2>/dev/n
 # by the kernel build system to create a gziped cpio archive which
 # is then embedded into the kernel binary.
 
-$SOURCES/scripts/gen_initramfs_list.sh -u squash -g squash $ROOT_DIR > \
+$SCRIPTS/gen_initramfs_list.sh -u squash -g squash $ROOT_DIR > \
 	initramfs-files
 
 # Add some more device nodes 
