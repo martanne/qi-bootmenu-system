@@ -1,6 +1,7 @@
 setupfor freetype
 
-# edit modules.cfg
+cp "$CONFIG_DIR/freetype-modules.cfg" modules.cfg
+
 ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr &&
 make &&
 make DESTDIR="$STAGING_DIR" install || dienow
