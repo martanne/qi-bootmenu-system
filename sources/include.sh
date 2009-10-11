@@ -43,8 +43,7 @@ then
   STAGE_NAME="cross"
   CROSS_LDFLAGS=
   CROSS_CFLAGS=
-  # XXX: --build=`config.guess`
-  CROSS_CONFIGURE_FLAGS="--build=i686-pc-linux-gnu \
+  CROSS_CONFIGURE_FLAGS="--build=`$SCRIPTS/config.guess` \
 	--target=armv4tl-unknown-linux-gnueabi \
 	--host=armv4tl-unknown-linux-gnueabi"
   # cross compiler prefix used by kernel, uclibc and busybox 
