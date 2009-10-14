@@ -87,3 +87,12 @@ function download_svn()
 
   return 1
 }
+
+# Note that this sources the file, rather than calling it as a separate
+# process.  That way it can set environment variables if it wants to.
+
+function build_package()
+{
+  [ ! -f "$SOURCES"/sections/"$1".sh ] && echo "Unknown package: $1" && exit 1
+  . "$SOURCES"/sections/"$1".sh
+}

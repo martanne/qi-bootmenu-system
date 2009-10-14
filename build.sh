@@ -42,28 +42,28 @@ if [ $# -ne 0 ]
 then
   for arg in "$@"
   do
-    build_section "$arg" 
+    build_package "$arg" 
   done
   exit
 fi
 
-build_section linux-headers
-build_section uClibc
-build_section busybox
-build_section kexec-tools
-build_section zlib
-build_section libjpeg
-build_section tslib
-build_section freetype
-build_section eina
-build_section eet
-build_section evas
-build_section ecore
-build_section embryo
-build_section lua
-build_section edje
-build_section elementary
-build_section dropbear
-build_section dialog-elementary
+build_package linux-headers
+build_package uClibc
+build_package busybox
+build_package kexec-tools
+build_package zlib
+build_package libjpeg
+build_package tslib
+build_package freetype
+build_package eina
+build_package eet
+build_package evas
+build_package ecore
+build_package embryo
+build_package lua
+build_package edje
+build_package elementary
+build_package dropbear
+build_package dialog-elementary
 
 echo "Build complete now run ./initramfs.sh"
