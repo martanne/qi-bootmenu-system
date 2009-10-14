@@ -317,7 +317,7 @@ function cleanup_oldfiles()
 
 function actually_dienow()
 {
-  echo -e "\n\e[31mExiting due to errors ($PACKAGE $ERROR_MSG)\e[0m"
+  echo -e "\n\e[31mExiting due to errors ($PACKAGE)\e[0m"
   exit 1
 }
 
@@ -326,12 +326,6 @@ TOPSHELL=$$
 
 function dienow()
 {
-  EXIT_STATUS=$?
-  echo "dienow: $EXIT_STATUS"
-#  [ $EXIT_STATUS -ne 0 ] || return 0 
-  ERROR_MSG="exit status: $EXIT_STATUS"
-  echo "dienow: $ERROR_MSG"
-  [ $# -ne 0 ] && ERROR_MSG="$ERROR_MSG $*"
   kill -USR1 $TOPSHELL
   exit 1
 }
