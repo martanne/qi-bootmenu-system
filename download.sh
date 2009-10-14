@@ -57,9 +57,9 @@ download || dienow
 
 #URL=http://www.brain-dump.org/tmp/tslib-1.0.0-r77-patched.tar.bz2 \
 #SHA1=37e6e7fd0ad30cea19f03bf0276100d606861d00 \
-SHA1= SCM_REV=77 \
+SHA1= SVN_REV=77 \
 URL=svn://svn.berlios.de/tslib/trunk/tslib \
-download_scm || dienow
+download_svn || dienow
 
 URL=http://mirrors.zerg.biz/nongnu/freetype/freetype-2.3.9.tar.bz2 \
 SHA1=db08969cb5053879ff9e973fe6dd2c52c7ea2d4e \
@@ -67,33 +67,33 @@ download || dienow
 
 #URL=http://download.enlightenment.org/snapshots/2009-07-29/eina-0.0.2.062.tar.bz2 \
 #SHA1=937e3d7744cb70d6b79a6f55143cb85e2ac52013 \
-SHA1= SCM=svn SCM_REV=42803 \
+SHA1= SVN_REV=42803 \
 URL=http://svn.enlightenment.org/svn/e/trunk/eina \
-download_scm || dienow
+download_svn || dienow
 
 #URL=http://download.enlightenment.org/releases/eet-1.2.2.tar.bz2 \
 #SHA1=971bc5b4d3678369b7c9e86cb641644d80109b26 \
-SHA1= SCM=svn SCM_REV=42803 \
+SHA1= SVN_REV=42803 \
 URL=http://svn.enlightenment.org/svn/e/trunk/eet \
-download_scm || dienow
+download_svn || dienow
 
 #URL=http://download.enlightenment.org/snapshots/2009-07-29/evas-0.9.9.062.tar.bz2 \
 #SHA1=182bd28662f40a498a40c2ecf9ae41ff53c167b8 \
-SHA1= SCM=svn SCM_REV=42803 \
+SHA1= SVN_REV=42803 \
 URL=http://svn.enlightenment.org/svn/e/trunk/evas \
-download_scm || dienow
+download_svn || dienow
 
 #URL=http://download.enlightenment.org/snapshots/2009-07-29/ecore-0.9.9.062.tar.bz2 \
 #SHA1=45d27ff2a3b1dd749bad7b5132bbed94beff10d4 \
-SHA1= SCM=svn SCM_REV=42803 \
+SHA1= SVN_REV=42803 \
 URL=http://svn.enlightenment.org/svn/e/trunk/ecore \
-download_scm || dienow
+download_svn || dienow
 
 #URL=http://download.enlightenment.org/snapshots/2009-07-29/embryo-0.9.9.062.tar.bz2 \
 #SHA1=a4939038dd5951a75b91085de0e9bf7bf1b9e16e \
-SHA1= SCM=svn SCM_REV=42803 \
+SHA1= SVN_REV=42803 \
 URL=http://svn.enlightenment.org/svn/e/trunk/embryo \
-download_scm || dienow
+download_svn || dienow
 
 URL=http://www.lua.org/ftp/lua-5.1.4.tar.gz \
 SHA1=2b11c8e60306efb7f0734b747588f57995493db7 \
@@ -101,15 +101,15 @@ download || dienow
 
 #URL=http://download.enlightenment.org/snapshots/2009-07-29/edje-0.9.92.062.tar.bz2 \
 #SHA1=ede4573df69e4c2fdeaf72b930556491680c7167 \
-SHA1= SCM=svn SCM_REV=42803 \
+SHA1= SVN_REV=42803 \
 URL=http://svn.enlightenment.org/svn/e/trunk/edje \
-download_scm || dienow
+download_svn || dienow
 
 #URL=http://download.enlightenment.org/snapshots/2009-07-29/elementary-0.5.1.0.tar.bz2 \
 #SHA1=3cad3467aba08167de1e8d41235126ee7cd5a533 \
-SHA1= SCM=svn SCM_REV=42803 \
+SHA1= SVN_REV=42803 \
 URL=http://svn.enlightenment.org/svn/e/trunk/TMP/st/elementary \
-download_scm || dienow
+download_svn || dienow
 
 URL=http://matt.ucc.asn.au/dropbear/releases/dropbear-0.52.tar.bz2 \
 SHA1=8c1745a9b64ffae79f28e25c6fe9a8b96cac86d8 \
