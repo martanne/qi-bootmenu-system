@@ -71,7 +71,7 @@ SHA1= SVN_REV=42803 \
 URL=http://svn.enlightenment.org/svn/e/trunk/evas \
 download_svn || dienow
 
-SHA1= SVN_REV=42995 \
+SHA1= SVN_REV=43084 \
 URL=http://svn.enlightenment.org/svn/e/trunk/ecore \
 download_svn || dienow
 

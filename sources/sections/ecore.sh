@@ -12,7 +12,7 @@ LDFLAGS="$CROSS_LDFLAGS $LDFLAGS" CFLAGS="$CROSS_CFLAGS $CFLAGS" ./configure $CR
 	--disable-doc \
 	--disable-ecore-x-xcb \
 	--disable-atfile-source \
-	--enable-ecore-con \
+	--disable-ecore-con \
 	--disable-ecore-config \
 	--disable-ecore-ipc \
 	--disable-abstract-sockets \
