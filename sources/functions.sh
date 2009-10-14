@@ -48,3 +48,58 @@ function create_rootfs_tarball()
   { tar -C "$ROOT_DIR" -czvf rootfs.tar.gz . || dienow
   } | dotprogress
 }
+
+# Try to download a given revision from a source control
+# management system. 
+
+function download_scm()
+{
+  SCM_TYPE=$SCM
+  [ -z "$SCM" ] && SCM_TYPE=`echo "$URL" | sed 's ://.*  '`
+
+  # In a first step get a tarball filename for the requested revison
+
+  [ -z "$SCM_REV" ] && SCM_REV="HEAD"
+
+  case "$SCM_TYPE" in
+    git)
+     echo git support not yet implemented
+     return 1;
+     ;;
+    hg)
+     echo hg support not yet implemented
+     return 1;
+     ;;
+    svn)
+     PACKAGE=`echo "$URL" | sed 's .*/  '`
+     DIRNAME=$PACKAGE-r$SCM_REV
+     FILENAME=$PACKAGE-r$SCM_REV.tar.bz2
+     ;;
+    *) return 1
+  esac
+  
+  # Update timestamp so cleanup_oldfiles doesn't delete it 
+  touch -c "$SRCDIR/$FILENAME" 2>/dev/null
+
+  # Return success if we have a valid copy of the file
+  try_checksum && return 0
+
+  echo Checking out $PACKAGE revision $SCM_REV from $SCM repository
+  # Checkout files from source repository if no revison was
+  # requested find out which revison current HEAD is and
+  # package everything into a tarball.
+  case "$SCM_TYPE" in
+    svn)
+      svn co --non-interactive -r$SCM_REV "$URL" "$SRCDIR/$PACKAGE" | dotprogress || return 1 
+      [ "x$SCM_REV" = "xHEAD" ] && cd "$SRCDIR/$PACKAGE" && \
+        DIRNAME="$PACKAGE-r$(svn info | grep Revision: | sed 's/Revision: //')" && cd - 1> /dev/null
+      mv "$SRCDIR/$PACKAGE" "$SRCDIR/$DIRNAME" &&
+      find "$SRCDIR/$DIRNAME" -name .svn | xargs rm -rf &&
+      tar -C "$SRCDIR" -cjf "$SRCDIR/$DIRNAME.tar.bz2" "$DIRNAME" &&
+      rm -rf "$SRCDIR/$DIRNAME" &&
+      return 0 
+      ;;
+  esac
+
+  return 1
+}
