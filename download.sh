@@ -99,10 +99,6 @@ URL=http://www.brain-dump.org/tmp/qi-bootmenu-system/dialog-elementary-v0.tar.bz
 SHA1=2661a31ff87b72519fa7f55135a2da45efaf2d40 \
 download || dienow
 
-URL=http://users.telenet.be/geertu/Linux/fbdev/fbset-2.1.tar.gz \
-SHA1=141c42769818a08f1370a60dc3a809d87530db78 \
-download || dienow
-
 URL=http://surfnet.dl.sourceforge.net/project/strace/strace/4.5.18/strace-4.5.18.tar.bz2 \
 URL=http://downloads.sourceforge.net/project/strace/strace/4.5.18/strace-4.5.18.tar.bz2 \
 SHA1=50081a7201dc240299396f088abe53c07de98e4c \
