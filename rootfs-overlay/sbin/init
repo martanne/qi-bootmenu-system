@@ -1,19 +1,29 @@
-#!/bin/ash
+#!/bin/sh
 
 export PATH=/sbin:/bin:/usr/sbin:/usr/bin
 export HOME=/home/root
 export USER=root
+export TSLIB_TSDEVICE=/dev/input/touchscreen0
 export ELM_ENGINE=fb
 export ELM_FONT_PATH=/usr/share/fonts
+export EDITOR=/bin/vi
 
-mount -t proc none /proc
-mount -t sysfs none /sys
-mount -t tmpfs none /tmp
+mount -t proc proc /proc
+mount -t sysfs sysfs /sys
+mount -t tmpfs tmpfs /tmp
+mount -t tmpfs tmpfs /dev
+mkdir /dev/pts
+mount -t devpts devpts /dev/pts
+#mkdir /dev/shm
+#mount -t tmpfs tmpfs /dev/shm
+echo /bin/mdev > /proc/sys/kernel/hotplug
+mdev -s
 
-echo
-echo Hello World
-echo
+nice -n -20 dialog "HELLO WOLRD" &
 
-dropbear
+sleep 5
 
-/bin/ash -l
+/etc/init.d/networking start
+/etc/init.d/dropbear start
+
+/bin/sh -l
