@@ -20,10 +20,11 @@ do
 	sed -i 's,^#define '$c',/* & */,g' options.h
 done
 
-make PROGRAMS="dropbear scp" MULTI=1
+make PROGRAMS="dropbear dropbearkey scp" MULTI=1
 
 cp dropbearmulti "$ROOT_DIR/usr/sbin" || dienow
 ln -sf dropbearmulti "$ROOT_DIR/usr/sbin/dropbear"
+ln -sf dropbearmulti "$ROOT_DIR/usr/sbin/dropbearkey"
 ln -sf ../sbin/dropbearmulti "$ROOT_DIR/usr/bin/scp"
 
 cleanup dropbear

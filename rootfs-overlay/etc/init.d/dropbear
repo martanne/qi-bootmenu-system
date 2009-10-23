@@ -1,8 +1,14 @@
 #!/bin/sh
 
+DROPBEAR_RSAKEY="/etc/dropbear/dropbear_rsa_host_key"
+
 case "$1" in
     start)
-	dropbear
+	if [ ! -f $DROPBEAR_RSAKEY ]; then 
+		echo "Creating RSA host key."
+		dropbearkey -t rsa -f $DROPBEAR_RSAKEY || echo "Key creation failed."
+	fi
+	dropbear || echo "Starting dropbear failed."
 	;;
     stop)
 	killall dropbear
