@@ -21,7 +21,6 @@ MIRROR_LIST=
 
 URL=http://kernel.org/pub/linux/kernel/v2.6/linux-2.6.30.4.tar.bz2 \
 SHA1=44504009f86e88da419f593b009475f3255b9e13 \
-UNSTABLE=http://kernel.org/pub/linux/kernel/v2.6/testing/linux-2.6.31-rc5.tar.bz2 \
 download || dienow
 
 URL='http://git.openmoko.org/?p=kernel.git;a=snapshot;h=399e0854777c263dee8f5abcbe5749007e594ee5;sf=tgz' \
@@ -31,12 +30,10 @@ download || dienow
 
 URL=http://www.uclibc.org/downloads/uClibc-0.9.30.1.tar.bz2 \
 SHA1=4b36fec9a0dacbd6fe0fd2cdb7836aaf8b7f4992 \
-UNSTABLE=http://uclibc.org/downloads/uClibc-snapshot.tar.bz2 \
 download || dienow
 
 URL=http://www.busybox.net/downloads/busybox-1.14.3.tar.bz2 \
 SHA1=0162e2210e7b95396ee35f005929f747ecb9ad8f \
-UNSTABLE=http://busybox.net/downloads/busybox-snapshot.tar.bz2 \
 download || dienow
 
 URL=http://www.kernel.org/pub/linux/kernel/people/horms/kexec-tools/kexec-tools-2.0.1.tar.bz2 \
