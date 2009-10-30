@@ -24,7 +24,7 @@ SHA1=44504009f86e88da419f593b009475f3255b9e13 \
 download || dienow
 
 URL='http://git.openmoko.org/?p=kernel.git;a=snapshot;h=399e0854777c263dee8f5abcbe5749007e594ee5;sf=tgz' \
-SHA1= \
+SHA1=7de8bb67ec095cf527bb073a4744d89df1ad79ff \
 RENAME="s/.*h=(.*);.*/kernel-\1.tar.gz/" \
 download || dienow
 
