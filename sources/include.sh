@@ -26,7 +26,8 @@ export STAGING_DIR="${TOP}/staging-dir"
 # like -nostdinc -nostdlibs -nodefaultlibs to gcc. 
 
 CFLAGS_HEADERS="-I$STAGING_DIR/usr/include" 
-CFLAGS="$CFLAGS_HEADERS -Os -pipe -march=armv4t -mtune=arm9tdmi"
+CFLAGS="$CFLAGS_HEADERS -Os -pipe -march=armv4t -mtune=arm920t"
+#CFLAGS="$CFLAGS_HEADERS -g -ggdb -pipe -march=armv4t -mtune=arm920t"
 LDFLAGS_LIBS="-L$STAGING_DIR/usr/lib"
 LDFLAGS="$LDFLAGS_LIBS"
 
