@@ -44,10 +44,10 @@ URL=http://www.zlib.net/zlib-1.2.3.tar.bz2 \
 SHA1=967e280f284d02284b0cd8872a8e2e04bfdc7283 \
 download || dienow
 
-# note there is no backslash at the end because of the symlink hack
-URL=http://www.ijg.org/files/jpegsrc.v7.tar.gz 
+URL=http://www.ijg.org/files/jpegsrc.v7.tar.gz \
 SHA1=88cced0fc3dbdbc82115e1d08abce4e9d23a4b47 \
-download && ln -sf "`echo $URL | sed 's .*/  '`" "$SRCDIR/libjpeg-`echo $URL | sed 's,.*\.\(v.*\),\1,'`"
+RENAME="s/jpegsrc\.(.*)/libjpeg-\1/" \
+download || dienow
 
 URL=http://downloads.sourceforge.net/project/libpng/00-libpng-stable/1.2.40/libpng-1.2.40.tar.bz2 \
 SHA1=776cf18a799af58303590f6996f6d3aa5a7908ff \
