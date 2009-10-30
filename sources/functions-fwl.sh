@@ -180,7 +180,7 @@ function try_download()
 
   if [ -n "$1" ]
   then
-    wget -t 2 -T 20 -O "$SRCDIR/$FILENAME" "$1" ||
+    wget -t 2 -T 60 -O "$SRCDIR/$FILENAME" "$1" ||
       (rm "$SRCDIR/$FILENAME"; return 2)
     touch -c "$SRCDIR/$FILENAME"
   fi
