@@ -1,6 +1,8 @@
+uImage-GTA02*.bin
 initramfs-files
-sources/config-busybox
+sources/config-linux
 sources/config-uClibc
+sources/config-busybox
 rootfs.tar*
 packages/
 build/
