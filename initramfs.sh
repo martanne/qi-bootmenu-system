@@ -10,8 +10,10 @@ tar -C "$ROOT_OVERLAY" -cf - . | tar -C "$ROOT_DIR" -xf -
 
 # strip all binaries
 
-${STRIP} "$ROOT_DIR"/usr/{bin/*,sbin/*} 2> /dev/null
-find "$ROOT_DIR/usr/lib" -name '*.so' | xargs ${STRIP} --strip-unneeded 2>/dev/null
+if [ -z "$NO_STRIP" ]; then
+	${STRIP} "$ROOT_DIR"/usr/{bin/*,sbin/*} 2> /dev/null
+	find "$ROOT_DIR/usr/lib" -name '*.so' | xargs ${STRIP} --strip-unneeded 2>/dev/null
+fi
 
 # generate file with the contents of the initramfs it's later used
 # by the kernel build system to create a gziped cpio archive which

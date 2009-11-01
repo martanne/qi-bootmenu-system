@@ -35,6 +35,9 @@
 # Debugging option to leave source in build/temp-$ARCH after build.
 # export NO_CLEANUP=1
 
+# Do not strip executables useful for debugging
+# export NO_STRIP=1
+
 # Tell the linux kernel, uClibc, and busybox to show the actual build commands
 # instead of pretty-print output.
 
