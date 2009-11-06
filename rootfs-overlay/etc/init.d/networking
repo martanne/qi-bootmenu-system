@@ -45,7 +45,7 @@ case "$1" in
 	fi
 
 	# load g_ether module if it isn't yet
-	lsmod | grep g_ether 2>/dev/null || modprobe g_ether 2>/dev/null
+	lsmod | grep g_ether >/dev/null 2>&1 || modprobe g_ether 2>/dev/null && sleep 1
 
 	ifconfig usb0 192.168.0.202 netmask 255.255.255.0 up 
 	route add default gw 192.168.0.200 metric 8
