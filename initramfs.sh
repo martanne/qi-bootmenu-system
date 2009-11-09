@@ -8,11 +8,13 @@ cd $TOP || dienow
 
 tar -C "$ROOT_OVERLAY" -cf - . | tar -C "$ROOT_DIR" -xf -
 
-# strip all binaries
-
 if [ -z "$NO_STRIP" ]; then
+	# strip all binaries
 	${STRIP} "$ROOT_DIR"/usr/{bin/*,sbin/*} 2> /dev/null
 	find "$ROOT_DIR/usr/lib" -name '*.so' | xargs ${STRIP} --strip-unneeded 2>/dev/null
+
+	# remove libthread_db which is used for cross debuging with gdb
+	rm "$ROOT_DIR/lib/libthread_db*"
 fi
 
 # generate file with the contents of the initramfs it's later used
