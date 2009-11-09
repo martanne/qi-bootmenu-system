@@ -1,3 +1,5 @@
+#!/bin/echo "This file is sourced, not run"
+
 # Lots of reusable functions.  This file is sourced, not run.
 
 function blank_tempdir()
@@ -18,22 +20,58 @@ function unstable()
   [ ! -z "$(echo ,"$USE_UNSTABLE", | grep ,"$1",)" ]
 }
 
+# Find all files in $STAGE_DIR newer than $CURSRC.
+
+function recent_binary_files()
+{
+  PREVIOUS=
+  (cd "$STAGE_DIR" || dienow
+   # Note $WORK/$PACKAGE != $CURSRC here for renamed packages like gcc-core.
+   find . -depth -newer "$WORK/$PACKAGE/FWL-TIMESTAMP" \
+     | sed -e 's/^.//' -e 's/^.//' -e '/^$/d'
+  ) | while read i
+  do
+    TEMP="${PREVIOUS##"$i"/}"
+
+    if [ $[${#PREVIOUS}-${#TEMP}] -ne $[${#i}+1] ]
+    then
+      # Because the expanded $i might have \ chars in it, that's why.
+      echo -n "$i"
+      echo -ne '\0'
+    fi
+    PREVIOUS="$i"
+  done
+}
+
 # Strip the version number off a tarball
 
 function cleanup()
 {
+  # If package build exited with an error, do not continue.
 
   [ $? -ne 0 ] && dienow
 
+  if [ ! -z "$BINARY_PACKAGE_TARBALLS" ]
+  then
+    TARNAME="$PACKAGE-$STAGE_NAME-${ARCH_NAME}".tar.bz2
+    echo -n Creating "$TARNAME"
+    { recent_binary_files | xargs -0 tar -cjvf \
+        "$BUILD/${TARNAME}".tar.bz2 -C "$STAGE_DIR" || dienow
+    } | dotprogress
+  fi
+
   if [ ! -z "$NO_CLEANUP" ]
   then
-    echo "skip cleanup $@"
+    echo "skip cleanup $PACKAGE $@"
     return
   fi
 
-  for i in "$@"
+  # Loop deleting directories
+
+  cd "$WORK" || dienow
+  for i in "$PACKAGE" "$@"
   do
-    unstable "$i" && i="$PACKAGE"
+    [ -z "$i" ] && continue
     echo "cleanup $i"
     rm -rf "$i" || dienow
  done
@@ -67,13 +105,13 @@ function sha1file()
 }
 
 # Extract tarball named in $1 and apply all relevant patches into
-# "$BUILD/sources/$1".  Record sha1sum of tarball and patch files in
+# "$BUILD/packages/$1".  Record sha1sum of tarball and patch files in
 # sha1-for-source.txt.  Re-extract if tarball or patches change.
 
 function extract()
 {
   FILENAME="$1"
-  SRCTREE="${BUILD}/sources"
+  SRCTREE="${BUILD}/packages"
   SHA1FILE="$(echo "${SRCTREE}/${PACKAGE}/sha1-for-source.txt")"
 
   # Sanity check: don't ever "rm -rf /".  Just don't.
@@ -112,14 +150,13 @@ function extract()
   echo -n "Extracting '${PACKAGE}'"
   # Delete the old tree (if any).  Create new empty working directories.
   rm -rf "${BUILD}/temp" "${SRCTREE}/${PACKAGE}" 2>/dev/null
-  mkdir -p "${BUILD}"/{temp,sources} || dienow
+  mkdir -p "${BUILD}"/{temp,packages} || dienow
 
   # Is it a bzip2 or gzip tarball?
   DECOMPRESS=""
   [ "$FILENAME" != "${FILENAME/%\.tar\.bz2/}" ] && DECOMPRESS="j"
   [ "$FILENAME" != "${FILENAME/%\.tar\.gz/}" ] && DECOMPRESS="z"
 
-  cd "${WORK}" &&
   { tar -xv${DECOMPRESS} -f "${SRCDIR}/${FILENAME}" -C "${BUILD}/temp" || dienow
   } | dotprogress
 
@@ -284,6 +321,12 @@ function dotprogress()
   echo
 }
 
+function set_titlebar()
+{
+  [ -z "$NO_TITLE_BAR" ] &&
+    echo -en "\033]2;$1\007"
+}
+
 # Extract package $1, use out-of-tree build directory $2 (or $1 if no $2)
 # Use link directory $3 (or $1 if no $3)
 
@@ -339,8 +382,22 @@ function setupfor()
   export WRAPPY_LOGPATH="$WRAPPY_LOGDIR/cmdlines.${STAGE_NAME}.$1"
 
   # Change window title bar to package now
-  [ -z "$NO_TITLE_BAR" ] &&
-    echo -en "\033]2;$ARCH_NAME $STAGE_NAME $PACKAGE\007"
+  set_titlebar "$ARCH_NAME $STAGE_NAME $PACKAGE"
+
+  # Ugly bug workaround: timestamp granularity in a lot of filesystems is only
+  # 1 second, so find -newer misses things installed in the same second, so we
+  # make sure it's a new second before we start actually doing anything.
+
+  if [ ! -z "$BINARY_PACKAGE_TARBALLS" ]
+  then
+    touch "${CURSRC}/FWL-TIMESTAMP" || dienow
+    TIME=$(date +%s)
+    while true
+    do
+      [ $TIME != "$(date +%s)" ] && break
+      sleep .1
+    done
+  fi
 }
 
 # Figure out what version of a package we last built

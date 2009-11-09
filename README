@@ -15,34 +15,31 @@ Pre-Requirements
 
  The boot system is uclibc based you can therefore _not_ use the 
  openmoko toolchain. Instead you need to build your own cross
- compiler. This is however out of scoup of this project.
+ compiler. This is however out of scope of this project.
 
- I strongly recommend you to use a somewhat modified toolchain from 
- the FWL project (http://www.landley.net/code/firmware/). It is 
- relocatable and uses a gcc wrapper script to make the gcc path 
+ I strongly recommend you to use a toolchain from the FWL project
+ 
+  http://www.landley.net/code/firmware/
+
+ It is relocatable and uses a gcc wrapper script to make the gcc path 
  logic somewhat sane (if that's possible at all). It is currently 
  the only tested and supported toolchain.
 
  You can now either download a pre built uclibc toolchain from:
 
-  http://www.brain-dump.org/tmp/qi-bootmenu-system/firmware-0.9.7-cross-compiler-armv4tl.tar.bz2
+  http://landley.net/code/firmware/downloads/binaries/cross-compiler-armv4tl.tar.bz2
 
  or build one from scratch with the following instructions:
 
   1. Download and extract
 
-      http://landley.net/code/firmware/downloads/firmware-0.9.7.tar.bz2
+      http://landley.net/code/firmware/downloads/firmware-0.9.8.tar.bz2
 
-  2. Download and extract into the same directory so that the files are
-     added to the existing directory structure.
-
-      http://www.brain-dump.org/tmp/qi-bootmenu-system/firmware-0.9.7-armv4tl-patch.tar.bz2
-
-  3. Build the cross compiler
+  2. Build the cross compiler
 
       ./cross-compiler.sh armv4tl
 
-  4. Go into the build/cross-compiler-armv4tl/bin directory and
+  3. Go into the build/cross-compiler-armv4tl/bin directory and
      create symlinks to every binary with the following prefix:
 
       armv4tl-unknown-linux-gnueabi-
@@ -60,7 +57,7 @@ Pre-Requirements
 	ln -sf "$OLD_APP" "$NEW_PREFIX-$APP" 
       done
 
-  5. Copy the build/cross-compiler-armv4tl directory to a
+  4. Copy the build/cross-compiler-armv4tl directory to a
      place of your choice.
 
  Now that you have a cross toolchain add it's bin directory to
@@ -159,7 +156,7 @@ How it all works
     files are sourced from ./build.sh.
 
     They normally start with setupfor $PACKAGE. This extracts the
-    source tarball to ./build/sources/$PACKAGE and applies all patches 
+    source tarball to ./build/packages/$PACKAGE and applies all patches 
     from ./sources/patches/$PACKAGE-*. The patched source is then copied
     over to ./build/temp-armv4tl/$PACKAGE where it is built.
 

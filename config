@@ -42,3 +42,8 @@
 # instead of pretty-print output.
 
 # export BUILD_VERBOSE=1
+
+# Create a tarball with the files installed by each individual package at
+# each stage of the build.
+
+# export BINARY_PACKAGE_TARBALLS=1
