@@ -23,8 +23,8 @@ URL=http://kernel.org/pub/linux/kernel/v2.6/linux-2.6.30.4.tar.bz2 \
 SHA1=44504009f86e88da419f593b009475f3255b9e13 \
 download || dienow
 
-URL='http://git.openmoko.org/?p=kernel.git;a=snapshot;h=399e0854777c263dee8f5abcbe5749007e594ee5;sf=tgz' \
-SHA1=7de8bb67ec095cf527bb073a4744d89df1ad79ff \
+URL='http://git.openmoko.org/?p=kernel.git;a=snapshot;h=a03f58c61cb66164aa40cbf7bf3ff5f24a6f658b;sf=tgz' \
+SHA1= \
 RENAME="s/.*h=(.*);.*/kernel-\1.tar.gz/" \
 download || dienow
 
