@@ -19,10 +19,6 @@ MIRROR_LIST=
 # a new version of a file, set SHA1= and update the URL, run ./download.sh,
 # then cut and paste the sha1 from the output and run it again to confirm.
 
-URL=http://kernel.org/pub/linux/kernel/v2.6/linux-2.6.30.4.tar.bz2 \
-SHA1=44504009f86e88da419f593b009475f3255b9e13 \
-download || dienow
-
 URL='http://git.openmoko.org/?p=kernel.git;a=snapshot;h=a03f58c61cb66164aa40cbf7bf3ff5f24a6f658b;sf=tgz' \
 SHA1= \
 RENAME="s/.*h=(.*);.*/kernel-\1.tar.gz/" \
