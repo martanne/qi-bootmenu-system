@@ -32,8 +32,8 @@ URL=http://www.uclibc.org/downloads/uClibc-0.9.30.1.tar.bz2 \
 SHA1=4b36fec9a0dacbd6fe0fd2cdb7836aaf8b7f4992 \
 download || dienow
 
-URL=http://www.busybox.net/downloads/busybox-1.14.3.tar.bz2 \
-SHA1=0162e2210e7b95396ee35f005929f747ecb9ad8f \
+URL=http://www.busybox.net/downloads/busybox-1.15.2.tar.bz2 \
+SHA1=2f396a4cb35db438a9b4af43df6224f343b8a7ae \
 download || dienow
 
 URL=http://www.kernel.org/pub/linux/kernel/people/horms/kexec-tools/kexec-tools-2.0.1.tar.bz2 \
