@@ -57,15 +57,15 @@ URL=http://mirrors.zerg.biz/nongnu/freetype/freetype-2.3.9.tar.bz2 \
 SHA1=db08969cb5053879ff9e973fe6dd2c52c7ea2d4e \
 download || dienow
 
-SHA1= SVN_REV=42803 \
+SHA1= SVN_REV=43606 \
 URL=http://svn.enlightenment.org/svn/e/trunk/eina \
 download_svn || dienow
 
-SHA1= SVN_REV=42803 \
+SHA1= SVN_REV=43606 \
 URL=http://svn.enlightenment.org/svn/e/trunk/eet \
 download_svn || dienow
 
-SHA1= SVN_REV=42803 \
+SHA1= SVN_REV=43606 \
 URL=http://svn.enlightenment.org/svn/e/trunk/evas \
 download_svn || dienow
 
@@ -73,7 +73,7 @@ SHA1= SVN_REV=43084 \
 URL=http://svn.enlightenment.org/svn/e/trunk/ecore \
 download_svn || dienow
 
-SHA1= SVN_REV=42803 \
+SHA1= SVN_REV=43606 \
 URL=http://svn.enlightenment.org/svn/e/trunk/embryo \
 download_svn || dienow
 
@@ -81,11 +81,11 @@ URL=http://www.lua.org/ftp/lua-5.1.4.tar.gz \
 SHA1=2b11c8e60306efb7f0734b747588f57995493db7 \
 download || dienow
 
-SHA1= SVN_REV=42803 \
+SHA1= SVN_REV=43606 \
 URL=http://svn.enlightenment.org/svn/e/trunk/edje \
 download_svn || dienow
 
-SHA1= SVN_REV=42803 \
+SHA1= SVN_REV=43606 \
 URL=http://svn.enlightenment.org/svn/e/trunk/TMP/st/elementary \
 download_svn || dienow
 
