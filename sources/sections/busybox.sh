@@ -1,16 +1,12 @@
 setupfor busybox
 
 make allnoconfig KCONFIG_ALLCONFIG="$CONFIG_DIR/miniconfig-busybox" &&
+
 cp .config "$CONFIG_DIR/config-busybox" &&
-LDFLAGS="$CROSS_LDFLAGS $LDFLAGS" make -j $CPUS CROSS_COMPILE="$CROSS" $VERBOSITY &&
-make busybox.links &&
-cp busybox "$ROOT_DIR/usr/bin"
+
+LDFLAGS="$CROSS_LDFLAGS $LDFLAGS" make -j $CPUS CROSS_COMPILE="$CROSS" CONFIG_PREFIX="$ROOT_DIR" \
+	$VERBOSITY install
 
 [ $? -ne 0 ] && dienow
-
-for i in $(sed 's@.*/@@' busybox.links)
-do
-  ln -s busybox "$ROOT_DIR/usr/bin/$i" 2>/dev/null
-done
 
 cleanup busybox
