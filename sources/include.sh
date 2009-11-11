@@ -49,7 +49,7 @@ then
 	--host=armv4tl-unknown-linux-gnueabi"
   # cross compiler prefix used by kernel, uclibc and busybox 
   # build system
-  CROSS="armv4tl-unknown-linux-gnueabi-"
+  [ -z "$CROSS" ] && CROSS="armv4tl-"
 fi
 
 STRIP="${CROSS}strip"

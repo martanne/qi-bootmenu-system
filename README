@@ -39,25 +39,7 @@ Pre-Requirements
 
       ./cross-compiler.sh armv4tl
 
-  3. Go into the build/cross-compiler-armv4tl/bin directory and
-     create symlinks to every binary with the following prefix:
-
-      armv4tl-unknown-linux-gnueabi-
-
-     The following script does this when run from within the 
-     build/cross-compiler-armv4tl/bin directory:
-
-      #!/bin/sh
-
-      OLD_PREFIX=armv4tl
-      NEW_PREFIX=armv4tl-unknown-linux-gnueabi
-
-      for OLD_APP in $OLD_PREFIX-*; do 
-	APP=$(echo $OLD_APP | sed 's/.*-\(.*\)$/\1/')
-	ln -sf "$OLD_APP" "$NEW_PREFIX-$APP" 
-      done
-
-  4. Copy the build/cross-compiler-armv4tl directory to a
+  3. Copy the build/cross-compiler-armv4tl directory to a
      place of your choice.
 
  Now that you have a cross toolchain add it's bin directory to
@@ -85,6 +67,10 @@ Building the boot system
  if this is not the case then add it.
 
   cd cross-compiler-armv4tl/bin && export PATH=`pwd`:$PATH
+
+ By default the scripts assume 'armv4tl-' as toolchain prefix if your 
+ toolchain uses something differenct then set the $CROSS environment 
+ variable accordingly.
  
  Building
  --------
