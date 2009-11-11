@@ -20,6 +20,8 @@ mount -t devpts devpts /dev/pts
 echo /bin/mdev > /proc/sys/kernel/hotplug
 mdev -s
 
+[ ! -d /dev/input ] && mkdir /dev/input
+
 cd $HOME
 
 nice -n -20 dialog "HELLO WOLRD" &
