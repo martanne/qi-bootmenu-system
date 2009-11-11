@@ -49,7 +49,7 @@ function cleanup()
 {
   # If package build exited with an error, do not continue.
 
-  [ $? -ne 0 ] && dienow
+  #[ $? -ne 0 ] && dienow
 
   if [ ! -z "$BINARY_PACKAGE_TARBALLS" ]
   then
