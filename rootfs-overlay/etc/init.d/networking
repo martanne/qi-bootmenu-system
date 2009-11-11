@@ -47,15 +47,16 @@ case "$1" in
 	# load g_ether module if it isn't yet
 	lsmod | grep g_ether >/dev/null 2>&1 || modprobe g_ether 2>/dev/null && sleep 1
 
-	ifconfig usb0 192.168.0.202 netmask 255.255.255.0 up 
-	route add default gw 192.168.0.200 metric 8
+	ip link set usb0 up
+	ip addr add 192.168.0.202/24 dev usb0
+	ip route add default via 192.168.0.200
+
 	echo nameserver 208.67.222.222 > /etc/resolv.conf
 	echo nameserver 208.67.220.220 >> /etc/resolv.conf
 
 	;;
     stop)
-	ifconfig usb0 down
-	modprobe -r g_ether
+	ip link set usb0 down
 	;;
     restart)
 	$0 stop
