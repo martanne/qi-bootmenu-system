@@ -1,0 +1,13 @@
+# Format for each entry: <id>:<runlevels>:<action>:<process>
+#
+# id        == tty to run on, or empty for /dev/console
+# runlevels == ignored
+# action    == one of sysinit, respawn, askfirst, wait, and once
+# process   == program to run
+
+::sysinit:/etc/init.d/rcS
+tty1::respawn:/sbin/getty 38400 tty1
+tty2::respawn:/sbin/getty 38400 tty2
+ttySAC2::respawn:/sbin/getty 115200 ttySAC2
+
+#null::shutdown:/bin/umount -a -r
