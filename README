@@ -27,7 +27,7 @@ Pre-Requirements
 
  You can now either download a pre built uclibc toolchain from:
 
-  http://landley.net/code/firmware/downloads/binaries/cross-compiler-armv4tl.tar.bz2
+  http://www.brain-dump.org/projects/qi-bootmenu-system/cross-compiler-armv4tl.tar.bz2
 
  or build one from scratch with the following instructions:
 
