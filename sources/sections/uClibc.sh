@@ -24,8 +24,10 @@ cd - >/dev/null
 
 # build and install into $STAGING_DIR
 
-make $UCLIBC_MAKE_FLAGS PREFIX="$STAGING_DIR/usr" DEVEL_PREFIX="/" -j $CPUS install
+make $UCLIBC_MAKE_FLAGS PREFIX="$STAGING_DIR/usr" DEVEL_PREFIX="/" -j $CPUS install &&
 make $UCLIBC_MAKE_FLAGS PREFIX="$STAGING_DIR/usr" DEVEL_PREFIX="/" -j $CPUS install_utils
+
+[ $? -ne 0 ] && dienow
 
 # install into $ROOT_DIR 
 
@@ -42,11 +44,5 @@ make $UCLIBC_MAKE_FLAGS PREFIX="$ROOT_DIR" install_runtime
 
 [ -e "$STAGING_DIR/usr/lib/libc.so" ] && \
 	sed -i 's,/lib/,,g' "$STAGING_DIR/usr/lib/libc.so" 
- 
-# delete the headers, static libs and example source code.
-
-#rm -rf "$ROOT_DIR/usr/include" &&
-#rm -rf "$ROOT_DIR"/usr/lib/*.a &&
-#rm -rf "$ROOT_DIR/usr/src" || dienow
 
 cleanup uClibc
