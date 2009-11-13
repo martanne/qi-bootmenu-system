@@ -1,13 +1,6 @@
 #!/bin/sh
 
-export PATH=/sbin:/bin:/usr/sbin:/usr/bin
-export HOME=/home/root
-export USER=root
-export TSLIB_TSDEVICE=/dev/input/touchscreen0
-export TSLIB_TSDEVICE=/dev/event1
-export ELM_ENGINE=fb
-export ELM_FONT_PATH=/usr/share/fonts
-export EDITOR=/bin/vi
+. /etc/profile
 
 mount -t proc proc /proc
 mount -t sysfs sysfs /sys
