@@ -25,9 +25,14 @@ export STAGING_DIR="${TOP}/staging-dir"
 # This is taken care of by a gcc wrapper script which passes things 
 # like -nostdinc -nostdlibs -nodefaultlibs to gcc. 
 
-CFLAGS_HEADERS="-I$STAGING_DIR/usr/include" 
-#CFLAGS="$CFLAGS_HEADERS -O0 -g -ggdb -pipe -march=armv4t -mtune=arm920t"
-CFLAGS="$CFLAGS_HEADERS -Os -pipe -march=armv4t -mtune=arm920t"
+CFLAGS_HEADERS="-I$STAGING_DIR/usr/include"
+
+if [ -z "$DEBUG" ]; then
+  CFLAGS="$CFLAGS_HEADERS -Os -pipe -march=armv4t -mtune=arm920t"
+else
+  CFLAGS="$CFLAGS_HEADERS -O0 -g -ggdb -pipe -march=armv4t -mtune=arm920t"
+fi
+
 LDFLAGS_LIBS="-L$STAGING_DIR/usr/lib"
 LDFLAGS="$LDFLAGS_LIBS"
 
