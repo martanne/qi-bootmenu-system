@@ -15,7 +15,7 @@ export SRCDIR="${TOP}/packages"
 export ROOT_DIR="${TOP}/rootfs"
 export ROOT_OVERLAY="${TOP}/rootfs-overlay"
 export BUILD="${TOP}/build"
-export CONFIG_DIR="${TOP}/sources"
+export CONFIG_DIR="${TOP}/sources/configs"
 export WORK="${BUILD}/temp-${ARCH}"
 export STAGING_DIR="${TOP}/staging-dir"
 
