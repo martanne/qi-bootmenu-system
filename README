@@ -37,7 +37,7 @@ Pre-Requirements
 
   2. Build the cross compiler
 
-      ./cross-compiler.sh armv4tl
+      ./download.sh && ./cross-compiler.sh armv4tl
 
   3. Copy the build/cross-compiler-armv4tl directory to a
      place of your choice.
@@ -69,7 +69,7 @@ Building the boot system
   cd cross-compiler-armv4tl/bin && export PATH=`pwd`:$PATH
 
  By default the scripts assume 'armv4tl-' as toolchain prefix if your 
- toolchain uses something differenct then set the $CROSS environment 
+ toolchain uses something different then set the $CROSS environment 
  variable accordingly.
  
  Building
@@ -123,9 +123,10 @@ How it all works
     some http/ftp server or uses a source code management system to 
     check it out from a repository.
 
-  - ./sources/miniconfig-{busybox,uClibc}
+  - ./sources/configs/miniconfig-{busybox,uClibc,linux}
 
-    Configuration files used for uClibc and busybox in the miniconfig format.
+    Configuration files used for busybox, uClibc and the linux kernel 
+    in the miniconfig format.
 
   - ./sources/patches/$PACKAGE-*
 
@@ -170,7 +171,7 @@ How it all works
     This is the case for libtool's *.la files in $STAGING_DIR/usr/lib 
     and the pkg-config *.pc files in $STAGING_DIR/usr/lib/pkgconfig. 
     The paths are changed by the two functions libtool_fixup_libdir
-    and pkgconfig_fixup_prefix functions.
+    and pkgconfig_fixup_prefix which are located in sources/functions.sh.
 
     Finally the build directory is removed with
  
