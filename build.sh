@@ -6,14 +6,6 @@ source sources/include.sh || exit 1
 
 ./download.sh || exit 1
 
-if [ -z "$CC" ]; then
-  if [ -z "$CROSS" ]; then
-    export CC="gcc"
-  else
-    export CC="${CROSS}gcc"
-  fi
-fi
-
 [ -z $(which "$CC") ] && echo "Compiler '$CC' not found in \$PATH." && exit 1 
 
 echo "=== Building"

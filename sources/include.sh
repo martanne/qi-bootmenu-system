@@ -58,6 +58,7 @@ then
 fi
 
 STRIP="${CROSS}strip"
+[ -z "$CC" ] && export CC="${CROSS}gcc"
 
 umask 022
 
