@@ -9,8 +9,8 @@ make CC="$CC" \
 	AR="${CROSS}ar rcu" \
 	RANLIB="${CROSS}ranlib" \
 	INSTALL_ROOT="/usr" \
-	MYCFLAGS="$CROSS_CFLAGS $CFLAGS" \
-	MYLDFLAGS="$CROSS_LDFLAGS $LDFLAGS" \
+	MYCFLAGS="$CFLAGS" \
+	MYLDFLAGS="$LDFLAGS" \
 	MYLIBS="-Wl,-E -ldl" \
 	linux &&
 make INSTALL_TOP="$STAGING_DIR/usr" install || dienow

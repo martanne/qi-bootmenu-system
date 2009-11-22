@@ -4,7 +4,7 @@ setupfor edje
 
 # XXX: we don't need edje_cc in cross compilation mode 
 
-LDFLAGS="$CROSS_LDFLAGS $LDFLAGS" CFLAGS="$CROSS_CFLAGS $CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
+LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
 	--disable-edje-cc \
 	--disable-doc &&
 make &&

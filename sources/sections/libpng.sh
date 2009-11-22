@@ -2,7 +2,7 @@ setupfor libpng
 
 # --without-libpng-compat ?
 # --with-zlib=$ROOT_DIR/usr doesn't seem to work
-LDFLAGS="$CROSS_LDFLAGS $LDFLAGS" CFLAGS="$CROSS_CFLAGS $CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
+LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
 	--without-libpng-compat &&
 make &&
 make DESTDIR="$STAGING_DIR" install || dienow

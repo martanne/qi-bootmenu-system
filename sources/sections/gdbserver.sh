@@ -2,7 +2,7 @@ setupfor gdb
 
 cd gdb/gdbserver || dienow
 
-LDFLAGS="$CROSS_LDFLAGS $LDFLAGS" CFLAGS="$CROSS_CFLAGS $CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
+LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
 	--program-prefix="" &&
 make &&
 make DESTDIR="$STAGING_DIR" install || dienow

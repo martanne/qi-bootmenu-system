@@ -13,7 +13,7 @@ setupfor evas
 #
 # we therefore ignore the global $CFLAGS and just use $CFLAGS_HEADERS here. 
 
-LDFLAGS="$CROSS_LDFLAGS $LDFLAGS" CFLAGS="$CFLAGS_HEADERS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
+LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS_HEADERS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
 	--enable-fb \
 	--disable-directfb \
 	--disable-sdl \

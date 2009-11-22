@@ -2,7 +2,7 @@
 
 setupfor strace
 
-LDFLAGS="$CROSS_LDFLAGS $LDFLAGS" CFLAGS="$CROSS_CFLAGS $CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr &&
+LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr &&
 make &&
 make DESTDIR="$STAGING_DIR" install || dienow
 

@@ -10,7 +10,7 @@ setupfor elementary
 #
 #      for now we change the libtool variable with sed 
 
-LDFLAGS="$CROSS_LDFLAGS $LDFLAGS" CFLAGS="$CROSS_CFLAGS $CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
+LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
 	--with-edje-cc=edje_cc &&
 sed -i 's/^link_all_deplibs=no$/link_all_deplibs=unknown/g' libtool
 make && 

@@ -7,7 +7,7 @@ setupfor ecore
 # ecore-file seems to depend on ecore-con
 # --with-iconv-link=-liconv \
 
-LDFLAGS="$CROSS_LDFLAGS $LDFLAGS" CFLAGS="$CROSS_CFLAGS $CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
+LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
 	--disable-simple-x11 \
 	--disable-doc \
 	--disable-ecore-x-xcb \

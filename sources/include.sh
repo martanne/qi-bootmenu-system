@@ -47,8 +47,6 @@ export PKG_CONFIG_SYSROOT_DIR="${STAGING_DIR}"
 if [[ ! $(uname -m) == arm* ]]
 then
   STAGE_NAME="cross"
-  CROSS_LDFLAGS=
-  CROSS_CFLAGS=
   CROSS_CONFIGURE_FLAGS="--build=`$SCRIPTS/config.guess` \
 	--target=armv4tl-unknown-linux-gnueabi \
 	--host=armv4tl-unknown-linux-gnueabi"

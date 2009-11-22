@@ -10,7 +10,7 @@ setupfor eet
 #
 #      for now we change the libtool variable with sed 
 
-LDFLAGS="$CROSS_LDFLAGS $LDFLAGS" CFLAGS="$CROSS_CFLAGS $CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
+LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
 	--disable-openssl \
 	--disable-gnutls \
 	--disable-cipher \

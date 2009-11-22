@@ -1,6 +1,6 @@
 setupfor dropbear 
 
-LDFLAGS="$CROSS_LDFLAGS $LDFLAGS" CFLAGS="$CROSS_CFLAGS $CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --with-shared \
+LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --with-shared \
 	--disable-pam \
 	--enable-openpty \
 	--enable-syslog \
