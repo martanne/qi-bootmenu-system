@@ -1,5 +1,7 @@
 setupfor kexec-tools
 
+[ ! -e ./configure ] && ./bootstrap
+
 ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
 	--exec-prefix=/usr &&
 make &&

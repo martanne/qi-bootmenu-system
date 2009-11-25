@@ -32,8 +32,9 @@ URL=http://www.busybox.net/downloads/busybox-1.15.2.tar.bz2 \
 SHA1=2f396a4cb35db438a9b4af43df6224f343b8a7ae \
 download || dienow
 
-URL=http://www.kernel.org/pub/linux/kernel/people/horms/kexec-tools/kexec-tools-2.0.1.tar.bz2 \
-SHA1=d3711794a2161bb88c75b74b5d6b41596e505b25 \
+URL='http://git.kernel.org/?p=linux/kernel/git/horms/kexec-tools.git;a=snapshot;h=aee54c10512b494747b03121fb0b3b1e91f63645;sf=tgz' \
+SHA1= \
+RENAME="s/.*h=(.*);.*/kexec-tools-\1.tar.gz/" \
 download || dienow
 
 URL=http://www.zlib.net/zlib-1.2.3.tar.bz2 \
