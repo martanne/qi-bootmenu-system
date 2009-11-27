@@ -31,9 +31,9 @@ LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS_HEADERS" ./configure $CROSS_CONFIGURE_FLAGS -
 	--enable-image-loader-eet \
 	--disable-image-loader-edb \
 	--disable-image-loader-gif \
-	--disable-image-loader-png \
+	--enable-image-loader-png \
 	--disable-image-loader-pmaps \
-	--enable-image-loader-jpeg \
+	--disable-image-loader-jpeg \
 	--disable-image-loader-tiff \
 	--disable-image-loader-xpm \
 	--disable-image-loader-svg \
