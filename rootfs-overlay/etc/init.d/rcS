@@ -15,9 +15,9 @@ mdev -s
 
 [ ! -d /dev/input ] && mkdir /dev/input
 
-cd $HOME
+mount -n -o remount,noatime,rw /
 
-nice -n -20 dialog "HELLO WOLRD" &
+/sbin/qi-bootmenu &
 
 sleep 5
 
