@@ -12,7 +12,7 @@ if [ -z "$NO_STRIP" ]; then
 	# strip all binaries
 	${STRIP} "$ROOT_DIR"/usr/{bin/*,sbin/*} 2> /dev/null
 	find "$ROOT_DIR/usr/lib" -name '*.so' | xargs ${STRIP} --strip-unneeded 2>/dev/null
-	find "$ROOT_DIR/lib/modules" -name '*.ko' | xargs ${STRIP}
+	[ -e "$ROOT_DIR/lib/modules" ] &&  find "$ROOT_DIR/lib/modules" -name '*.ko' | xargs ${STRIP}
 
 	# remove libthread_db which is used for cross debuging with gdb
 	rm -f "$ROOT_DIR"/lib/libthread_db*
