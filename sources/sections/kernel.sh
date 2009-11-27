@@ -8,9 +8,15 @@ VERSION=$(echo $SRCDIR/kernel-* | sed 's .*/  ' | sed -r 's/kernel-(.*)\.tar.*/\
 # kernel load address / entry point
 START=30008000
 
-make allnoconfig ARCH="${KARCH}" KCONFIG_ALLCONFIG="$CONFIG_DIR/miniconfig-linux" &&
+cp "$CONFIG_DIR/miniconfig-linux" config
 
-cp .config "$CONFIG_DIR/config-linux" &&
+if [ `grep CONFIG_BLK_DEV_INITRD=y config` ]; then
+  echo CONFIG_INITRAMFS_SOURCE=\"$TOP/initramfs-files\" >> config
+fi
+
+make allnoconfig ARCH="${KARCH}" KCONFIG_ALLCONFIG="config" || dienow 
+
+cp .config "$CONFIG_DIR/config-linux"
 
 make -j $CPUS ARCH="$KARCH" CROSS_COMPILE="$CROSS" CONFIG_DEBUG_SECTION_MISMATCH=y $VERBOSITY || dienow 
 

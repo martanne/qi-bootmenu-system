@@ -25,17 +25,6 @@ fi
 $SCRIPTS/gen_initramfs_list.sh -u squash -g squash $ROOT_DIR > \
 	initramfs-files
 
-# Add some more device nodes 
-
-echo "nod /dev/tty 644 0 0 c 5 0" >> initramfs-files
-echo "nod /dev/tty0 644 0 0 c 4 0" >> initramfs-files
-echo "nod /dev/tty1 644 0 0 c 4 1" >> initramfs-files
-echo "nod /dev/tty2 644 0 0 c 4 2" >> initramfs-files
-echo "nod /dev/ttyGS0 644 0 0 c 253 0" >> initramfs-files
-echo "nod /dev/ttySAC2 644 0 0 c 204 66" >> initramfs-files
-echo "nod /dev/console 622 0 0 c 5 1" >> initramfs-files
-echo "nod /dev/null 622 0 0 c 1 3" >> initramfs-files
-echo "nod /dev/fb0 644 0 0 c 29 0" >> initramfs-files
-
-echo "Specify initramfs-files during kernel compilation as CONFIG_INITRAMFS_SOURCE"
-echo "or run ./package.sh to create rootfs.tar.gz tarball for a chroot environment." 
+echo "Now run './build.sh kernel' which will build a kernel with initramfs-files as"
+echo "CONFIG_INITRAMFS_SOURCE or run ./package.sh to create a rootfs.tar.gz tarball"
+echo "that you can extract on a SD card."
