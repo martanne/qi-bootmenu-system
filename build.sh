@@ -22,7 +22,7 @@ fi
 
 if [[ ! -d "$ROOT_DIR" || ! -d "$ROOT_DIR/usr" ]]
 then
-  mkdir -p "$ROOT_DIR"/{tmp,proc,sys,dev,home/root} || dienow
+  mkdir -p "$ROOT_DIR"/{tmp,proc,sys,dev,mnt,home/root} || dienow
   for i in bin sbin lib etc
   do
     mkdir -p "$ROOT_DIR/usr/$i" || dienow
