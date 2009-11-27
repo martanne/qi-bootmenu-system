@@ -45,17 +45,14 @@ build_package busybox
 build_package kexec-tools
 build_package zlib
 build_package libjpeg
+build_package libpng
 build_package tslib
 build_package freetype
 build_package eina
 build_package eet
 build_package evas
 build_package ecore
-build_package embryo
-build_package lua
-build_package edje
-build_package elementary
+build_package qi-bootmenu
 build_package dropbear
-build_package dialog-elementary
 
 echo "Build complete now run ./initramfs.sh"
