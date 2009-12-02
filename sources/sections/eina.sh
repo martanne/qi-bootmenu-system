@@ -5,7 +5,7 @@ setupfor eina
 #	--enable-default-mempool depends on pass-through
 #	--disable-chained-pool con't be used because edje requires it
 
-./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
+LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
 	--disable-cpu-mmx \
 	--disable-cpu-sse \
 	--disable-cpu-sse2 \

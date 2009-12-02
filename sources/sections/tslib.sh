@@ -4,7 +4,7 @@ setupfor tslib
 
 # 	--enable-linear-h2200  
 
-./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
+LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
 	--enable-static \
 	--disable-h3600 \
 	--enable-input \
