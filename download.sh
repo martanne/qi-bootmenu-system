@@ -58,47 +58,42 @@ URL=http://mirrors.zerg.biz/nongnu/freetype/freetype-2.3.9.tar.bz2 \
 SHA1=db08969cb5053879ff9e973fe6dd2c52c7ea2d4e \
 download || dienow
 
-SHA1= SVN_REV=43606 \
-URL=http://svn.enlightenment.org/svn/e/trunk/eina \
-download_svn || dienow
+URL=http://download.enlightenment.org/snapshots/2009-12-02/eina-0.9.9.063.tar.bz2 \
+SHA1= \
+download || dienow
 
-SHA1= SVN_REV=43606 \
-URL=http://svn.enlightenment.org/svn/e/trunk/eet \
-download_svn || dienow
+URL=http://download.enlightenment.org/releases/eet-1.2.3.tar.bz2 \
+SHA1= \
+download || dienow
 
-SHA1= SVN_REV=43606 \
-URL=http://svn.enlightenment.org/svn/e/trunk/evas \
-download_svn || dienow
+URL=http://download.enlightenment.org/snapshots/2009-12-02/evas-0.9.9.063.tar.bz2 \
+SHA1= \
+download || dienow
 
-SHA1= SVN_REV=43084 \
-URL=http://svn.enlightenment.org/svn/e/trunk/ecore \
-download_svn || dienow
+URL=http://download.enlightenment.org/snapshots/2009-12-02/ecore-0.9.9.063.tar.bz2 \
+SHA1= \
+download || dienow
 
-SHA1= SVN_REV=43606 \
-URL=http://svn.enlightenment.org/svn/e/trunk/embryo \
-download_svn || dienow
+URL=http://download.enlightenment.org/snapshots/2009-12-02/embryo-0.9.9.063.tar.bz2 \
+SHA1= \
+download || dienow
 
 URL=http://www.lua.org/ftp/lua-5.1.4.tar.gz \
 SHA1=2b11c8e60306efb7f0734b747588f57995493db7 \
 download || dienow
 
-SHA1= SVN_REV=43606 \
-URL=http://svn.enlightenment.org/svn/e/trunk/edje \
-download_svn || dienow
+URL=http://download.enlightenment.org/snapshots/2009-12-02/edje-0.9.93.063.tar.bz2 \
+SHA1= \
+download || dienow
 
-SHA1= SVN_REV=43606 \
-URL=http://svn.enlightenment.org/svn/e/trunk/TMP/st/elementary \
-download_svn || dienow
+URL=http://download.enlightenment.org/snapshots/2009-12-02/elementary-0.6.0.063.tar.bz2 \
+SHA1= \
+download || dienow
 
 URL=http://matt.ucc.asn.au/dropbear/releases/dropbear-0.52.tar.bz2 \
 SHA1=8c1745a9b64ffae79f28e25c6fe9a8b96cac86d8 \
 download || dienow
 
-URL=http://www.brain-dump.org/tmp/qi-bootmenu-system/dialog-elementary-v0.tar.bz2 \
-SHA1=2661a31ff87b72519fa7f55135a2da45efaf2d40 \
-download || dienow
-
-URL=http://surfnet.dl.sourceforge.net/project/strace/strace/4.5.18/strace-4.5.18.tar.bz2 \
 URL=http://downloads.sourceforge.net/project/strace/strace/4.5.18/strace-4.5.18.tar.bz2 \
 SHA1=50081a7201dc240299396f088abe53c07de98e4c \
 download || dienow
