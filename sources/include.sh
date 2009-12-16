@@ -33,8 +33,7 @@ else
   CFLAGS="$CFLAGS_HEADERS -O0 -g -ggdb -pipe -march=armv4t -mtune=arm920t"
 fi
 
-LDFLAGS_LIBS="-L$STAGING_DIR/usr/lib"
-LDFLAGS="$LDFLAGS_LIBS"
+LDFLAGS=""
 
 # Make sure that pkg-config uses the right paths and doesn't pull
 # in depencies from the host system.
@@ -57,6 +56,11 @@ fi
 
 STRIP="${CROSS}strip"
 [ -z "$CC" ] && export CC="${CROSS}gcc"
+
+# tell the compiler wrapper (ccwrap) to link against the libc
+# from $STAGING_DIR and not against the one from the toolchain
+
+export WRAPPER_TOPDIR="$STAGING_DIR/usr"
 
 umask 022
 

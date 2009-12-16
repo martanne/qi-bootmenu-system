@@ -1,6 +1,15 @@
 # Build and install uClibc.
 
 setupfor uClibc
+
+# We need to unset the environment variable for ccwrap from include.sh
+# because there is no libc to link against we are building it here.
+# The reason why it is set in include.sh is that it works for manual
+# package builds ala ./build.sh qi-bootmenu 
+
+OLD_WRAPPER_TOPDIR=$WRAPPER_TOPDIR
+unset WRAPPER_TOPDIR
+
 make CROSS="$CROSS" KCONFIG_ALLCONFIG="$CONFIG_DIR/miniconfig-uClibc" allnoconfig &&
 cp .config "$CONFIG_DIR/config-uClibc" || dienow
 
@@ -43,6 +52,18 @@ make $UCLIBC_MAKE_FLAGS PREFIX="$ROOT_DIR" install_runtime
 # for the STAGING_DIR and one for the rootfs /.
 
 [ -e "$STAGING_DIR/usr/lib/libc.so" ] && \
-	sed -i 's,/lib/,,g' "$STAGING_DIR/usr/lib/libc.so" 
+	sed -i 's,/lib/,,g' "$STAGING_DIR/usr/lib/libc.so"
+
+# copy compiler related include files and libraries into
+# $STAGING_DIR so that the compiler wrapper (ccwrap) will
+# find it were it expects them.
+
+cp -r "$(dirname $(which armv4tl-gcc))/../cc" "$STAGING_DIR/usr" || dienow
+cp -P $(dirname $(which armv4tl-gcc))/../lib/libgcc* "$STAGING_DIR/usr/lib" || dienow
+
+# tell the compiler wrapper (ccwrap) to link all further
+# packages against the  newly built libc 
+
+export WRAPPER_TOPDIR=$OLD_WRAPPER_TOPDIR
 
 cleanup uClibc
