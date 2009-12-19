@@ -61,6 +61,7 @@ STRIP="${CROSS}strip"
 # $STAGING_DIR and not against the one from the toolchain
 
 export CCWRAP_TOPDIR="$STAGING_DIR/usr"
+export CCWRAP_CC="${CROSS}rawcc"
 
 umask 022
 
