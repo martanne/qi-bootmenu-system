@@ -57,10 +57,10 @@ fi
 STRIP="${CROSS}strip"
 [ -z "$CC" ] && export CC="${CROSS}gcc"
 
-# tell the compiler wrapper (ccwrap) to link against the libc
-# from $STAGING_DIR and not against the one from the toolchain
+# tell the compiler wrapper to link against the libc from 
+# $STAGING_DIR and not against the one from the toolchain
 
-export WRAPPER_TOPDIR="$STAGING_DIR/usr"
+export CCWRAP_TOPDIR="$STAGING_DIR/usr"
 
 umask 022
 
