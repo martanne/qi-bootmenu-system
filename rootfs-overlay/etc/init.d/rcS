@@ -11,7 +11,7 @@ mkdir /dev/pts && mount -t devpts devpts /dev/pts
 
 mount -n -o remount,noatime,rw /
 
-/sbin/qi-bootmenu &
+/sbin/qi-bootmenu -i /dev/mtdblock6 &
 
 sleep 5
 

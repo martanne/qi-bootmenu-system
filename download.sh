@@ -102,7 +102,7 @@ URL=http://ftp.gnu.org/gnu/gdb/gdb-7.0.tar.bz2 \
 SHA1=8aed621b7ddb8c82b6ff213b56c028787db90582 \
 download || dienow
 
-URL=http://repo.or.cz/w/qi-bootmenu.git/snapshot/ae9e0e4ffed61617f53fc625575464cb7e3103f1.tar.gz \
+URL=http://repo.or.cz/w/qi-bootmenu.git/snapshot/b99fe9b770b2b7a94a140e60f1ec9a37e91b2543.tar.gz \
 SHA1= \
 RENAME="s/(.*)/qi-bootmenu-\1/" \
 download || dienow
