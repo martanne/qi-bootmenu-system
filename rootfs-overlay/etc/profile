@@ -1,4 +1,2 @@
 export PATH=/sbin:/bin:/usr/sbin:/usr/bin
 export TSLIB_TSDEVICE=/dev/input/event1
-export ELM_ENGINE=fb
-export ELM_FONT_PATH=/usr/share/fonts

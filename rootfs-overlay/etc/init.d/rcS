@@ -18,3 +18,5 @@ sleep 5
 /etc/init.d/syslog start
 /etc/init.d/networking start
 /etc/init.d/dropbear start
+
+/bin/sh -l </dev/console >/dev/console 2>&1
