@@ -19,7 +19,7 @@ MIRROR_LIST=
 # a new version of a file, set SHA1= and update the URL, run ./download.sh,
 # then cut and paste the sha1 from the output and run it again to confirm.
 
-URL='http://git.openmoko.org/?p=kernel.git;a=snapshot;h=a03f58c61cb66164aa40cbf7bf3ff5f24a6f658b;sf=tgz' \
+URL='http://git.openmoko.org/?p=kernel.git;a=snapshot;h=06ac2c30542ba47bfe0ffc15b7868bb049bec053;sf=tgz' \
 SHA1= \
 RENAME="s/.*h=(.*);.*/kernel-\1.tar.gz/" \
 download || dienow

@@ -22,7 +22,8 @@ make -j $CPUS ARCH="$KARCH" CROSS_COMPILE="$CROSS" CONFIG_DEBUG_SECTION_MISMATCH
 
 if [ `grep CONFIG_MODULES=y .config` ]; then
 
-  make ARCH=$KARCH modules_install CROSS_COMPILE="$CROSS" INSTALL_MOD_PATH="$ROOT_DIR" || dienow 
+  make ARCH=$KARCH CROSS_COMPILE="$CROSS" modules || dienow 
+  make ARCH=$KARCH INSTALL_MOD_PATH="$ROOT_DIR" modules_install || dienow 
 
   # remove some broken symlinks from kernel build
   rm -f $ROOT_DIR/lib/modules/*/build
