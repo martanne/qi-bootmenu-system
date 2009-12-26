@@ -1,6 +1,6 @@
 setupfor tslib
 
-[ ! -e ./configure ] && NOCONFIGURE=y ./autogen.sh
+[ ! -e ./configure ] && ./autogen.sh
 
 # 	--enable-linear-h2200  
 
