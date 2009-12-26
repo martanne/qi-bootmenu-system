@@ -5,8 +5,16 @@ setupfor kernel
 VERSION=$(echo $SRCDIR/kernel-* | sed 's .*/  ' | sed -r 's/kernel-(.*)\.tar.*/\1/')
 [ -z "$VERSION" ] && VERSION="git"
 
-# kernel load address / entry point
-START=30008000
+case "$COMPRESSION" in
+  none)
+    COMPRESSION="Image"
+    KERNEL="arch/arm/boot/Image"
+    ;;
+  *)
+    COMPRESSION="zImage"
+    KERNEL="arch/arm/boot/zImage"
+    ;;
+esac
 
 cp "$CONFIG_DIR/miniconfig-linux" config
 
@@ -18,7 +26,7 @@ make allnoconfig ARCH="${KARCH}" KCONFIG_ALLCONFIG="config" || dienow
 
 cp .config "$CONFIG_DIR/config-linux"
 
-make -j $CPUS ARCH="$KARCH" CROSS_COMPILE="$CROSS" CONFIG_DEBUG_SECTION_MISMATCH=y $VERBOSITY || dienow 
+make -j $CPUS ARCH="$KARCH" CROSS_COMPILE="$CROSS" CONFIG_DEBUG_SECTION_MISMATCH=y $VERBOSITY $COMPRESSION || dienow 
 
 if [ `grep CONFIG_MODULES=y .config` ]; then
 
@@ -30,11 +38,8 @@ if [ `grep CONFIG_MODULES=y .config` ]; then
   rm  $ROOT_DIR/lib/modules/*/source
 fi
 
-${STRIP} -s arch/arm/boot/compressed/vmlinux &&
-${CROSS}objcopy -O binary -R .note -R .comment -S arch/arm/boot/compressed/vmlinux vmlinux.bin &&
-
-mkimage -A arm -O linux -T kernel -C none -a $START -e $START -n "Openmoko $MACHINE Bootmenu" \
-	-d vmlinux.bin uImage-$MACHINE.bin &&
+mkimage -A arm -O linux -T kernel -C none -a 0x30008000 -e 0x30008000 -n "Openmoko $MACHINE Bootmenu" \
+	-d $KERNEL uImage-$MACHINE.bin || dienow
 
 cp uImage-$MACHINE.bin $TOP 
 
