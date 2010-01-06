@@ -21,7 +21,9 @@ sed -i 's/^link_all_deplibs=no$/link_all_deplibs=unknown/g' libtool
 make &&
 make DESTDIR="$STAGING_DIR" install || dienow
 
-cp -P $STAGING_DIR/usr/lib/libeet.so* $ROOT_DIR/usr/lib || dienow
+if [ -z "$STATIC" ]; then 
+  cp -P $STAGING_DIR/usr/lib/libeet.so* $ROOT_DIR/usr/lib || dienow
+fi
 
 pkgconfig_fixup_prefix eet
 libtool_fixup_libdir eet

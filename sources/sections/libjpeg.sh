@@ -4,7 +4,9 @@ LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=
 make &&
 make DESTDIR="$STAGING_DIR" install || dienow
 
-cp -P $STAGING_DIR/usr/lib/libjpeg.so* $ROOT_DIR/usr/lib || dienow
+if [ -z "$STATIC" ]; then
+  cp -P $STAGING_DIR/usr/lib/libjpeg.so* $ROOT_DIR/usr/lib || dienow
+fi
 
 libtool_fixup_libdir libjpeg
 

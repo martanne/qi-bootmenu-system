@@ -9,6 +9,8 @@ make prefix="$STAGING_DIR/usr" install || dienow
 LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure --prefix=/usr --shared &&
 make prefix="$STAGING_DIR/usr" install || dienow
 
-cp -P $STAGING_DIR/usr/lib/libz.so* $ROOT_DIR/usr/lib || dienow
+if [ -z "$STATIC" ]; then
+  cp -P $STAGING_DIR/usr/lib/libz.so* $ROOT_DIR/usr/lib || dienow
+fi
 
 cleanup zlib
