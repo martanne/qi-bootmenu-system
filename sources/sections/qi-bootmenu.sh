@@ -1,6 +1,8 @@
 setupfor qi-bootmenu 
 
-LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" make &&
+[ ! -z "$STATIC" ] && TARGET="static"
+
+LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" make $TARGET &&
 
 make PREFIX=/usr DESTDIR="$ROOT_DIR" install
 
