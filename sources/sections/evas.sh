@@ -2,12 +2,15 @@ setupfor evas
 
 [ ! -e ./configure ] && NOCONFIGURE=y ./autogen.sh
 
+[ -z "$STATIC" ] && ENABLE="yes" || ENABLE="static"
+
 LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
-	--enable-fb \
+	--enable-fb=$ENABLE \
 	--disable-directfb \
 	--disable-sdl \
-	--enable-buffer	\
+	--enable-buffer=$ENABLE	\
 	--disable-evas-cserve \
+	--enable-static-software-generic \
 	--disable-software-ddraw \
 	--disable-software-qtopia \
 	--disable-software-xlib	\
@@ -17,10 +20,10 @@ LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=
 	--disable-xrender-x11 \
 	--disable-xrender-xcb \
 	--disable-glitz-x11 \
-	--enable-image-loader-eet \
+	--disable-image-loader-eet \
 	--disable-image-loader-edb \
 	--disable-image-loader-gif \
-	--enable-image-loader-png \
+	--enable-image-loader-png=$ENABLE \
 	--disable-image-loader-pmaps \
 	--disable-image-loader-jpeg \
 	--disable-image-loader-tiff \
@@ -29,7 +32,7 @@ LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=
 	--enable-cpu-c \
 	--disable-evas-magic-debug \
 	--disable-fontconfig \
-	--enable-font-loader-eet \
+	--disable-font-loader-eet \
 	--disable-scale-sample \
 	--enable-scale-smooth \
 	--enable-convert-yuv \
@@ -65,9 +68,11 @@ LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=
 make &&
 make DESTDIR="$STAGING_DIR" install || dienow
 
-install_shared_library evas
-# delete all savers because we don't need them
-rm -rf "$ROOT_DIR/usr/lib/evas/modules/savers"
+if [ -z "$STATIC" ]; then
+  install_shared_library evas
+  # delete all savers because we don't need them
+  rm -rf "$ROOT_DIR/usr/lib/evas/modules/savers"
+fi
 
 pkgconfig_fixup_prefix evas
 libtool_fixup_libdir evas
