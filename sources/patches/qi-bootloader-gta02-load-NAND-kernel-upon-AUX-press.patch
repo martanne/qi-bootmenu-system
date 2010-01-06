@@ -1,0 +1,52 @@
+From fa5733c2e85cb5edfb7f9a20412922b5c6a4b28e Mon Sep 17 00:00:00 2001
+From: Marc Andre Tanner <mat@brain-dump.org>
+Date: Wed, 2 Dec 2009 01:29:58 +0100
+Subject: [PATCH 2/3] gta02: load NAND kernel upon AUX press
+
+Signed-off-by: Marc Andre Tanner <mat@brain-dump.org>
+---
+ src/cpu/s3c2442/gta02.c |   14 +++++++++++---
+ 1 files changed, 11 insertions(+), 3 deletions(-)
+
+diff --git a/src/cpu/s3c2442/gta02.c b/src/cpu/s3c2442/gta02.c
+index 13be2ac..32a63bf 100644
+--- a/src/cpu/s3c2442/gta02.c
++++ b/src/cpu/s3c2442/gta02.c
+@@ -493,18 +493,24 @@ static u8 get_ui_keys_gta02(void)
+ 	u8 ret = 0;
+ 	static u8 old_keys = 0; /* previous state for debounce */
+ 	static u8 older_keys = 0; /* previous debounced output for edge detect */
++	static u8 kernel_ui = 0;
+ 
+ 	/* GPF6 is AUX on GTA02, map to UI_ACTION_SKIPKERNEL, down = 1 */
+ 	keys = !!(rGPFDAT & (1 << 6));
+ 
+ 	/* edge action */
+-	if ((old_keys & 1) && !(older_keys & 1))
+-		ret |= UI_ACTION_SKIPKERNEL;
++	if ((old_keys & 1) && !(older_keys & 1)) {
++		/* only generate 1 skip event if a bootmenu kernel is configured
++		 * otherwise we would probably end up skipping the ui kernel too */
++		if (!board_api_gta02.kernel_ui || !kernel_ui)
++			ret |= UI_ACTION_SKIPKERNEL;
++		kernel_ui = UI_ACTION_UI_KERNEL;
++	}
+ 
+ 	older_keys = old_keys;
+ 	old_keys = keys;
+ 
+-	return ret;
++	return ret | kernel_ui;
+ }
+ 
+ static u8 get_ui_debug_gta02(void)
+@@ -737,4 +743,6 @@ const struct board_api board_api_gta02 = {
+ 					      "root=/dev/mtdblock6 ",
+ 		},
+ 	},
++	/* boot NAND kernel on AUX press */
++	.kernel_ui = 3,
+ };
+-- 
+1.6.5
+
