@@ -107,6 +107,11 @@ SHA1= \
 RENAME="s/(.*)/qi-bootmenu-\1/" \
 download || dienow
 
+URL='http://git.openmoko.org/?p=qi.git;a=snapshot;h=c38b062a609f1442e6a9e13005cfbdfd59a5ac0d;sf=tgz' \
+SHA1= \
+RENAME="s/.*h=(.*);.*/qi-bootloader-\1.tar.gz/" \
+download || dienow
+
 echo === Got all source.
 
 cleanup_oldfiles
