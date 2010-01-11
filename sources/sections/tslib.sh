@@ -2,22 +2,27 @@ setupfor tslib
 
 [ ! -e ./configure ] && ./autogen.sh
 
-# 	--enable-linear-h2200  
+[ -z "$STATIC" ] && ENABLE="yes" || ENABLE="static"
 
 LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
 	--enable-static \
+	--enable-pthres=$ENABLE \
+	--enable-variance=$ENABLE \
+	--enable-dejitter=$ENABLE \
+	--enable-linear=$ENABLE \
+	--enable-input=$ENABLE \
 	--disable-h3600 \
-	--enable-input \
 	--disable-corgi \
 	--disable-collie \
 	--disable-mk712 \
 	--disable-arctic2 \
+	--disable-tatung \
 	--disable-ucb1x00 \
  	--disable-linear-h2200 &&
 make &&
 make DESTDIR="$STAGING_DIR" install || dienow
 
-install_shared_library ts
+[ -z "$STATIC" ] && install_shared_library ts
 
 pkgconfig_fixup_prefix ts
 libtool_fixup_libdir ts
