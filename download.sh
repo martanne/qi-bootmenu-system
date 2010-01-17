@@ -74,10 +74,6 @@ URL=http://download.enlightenment.org/snapshots/2009-12-02/ecore-0.9.9.063.tar.b
 SHA1= \
 download || dienow
 
-URL=http://download.enlightenment.org/snapshots/2009-12-02/embryo-0.9.9.063.tar.bz2 \
-SHA1= \
-download || dienow
-
 URL=http://download.enlightenment.org/snapshots/2009-12-02/elementary-0.6.0.063.tar.bz2 \
 SHA1= \
 download || dienow
