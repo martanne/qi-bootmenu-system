@@ -74,10 +74,6 @@ URL=http://download.enlightenment.org/snapshots/2009-12-02/ecore-0.9.9.063.tar.b
 SHA1= \
 download || dienow
 
-URL=http://download.enlightenment.org/snapshots/2009-12-02/elementary-0.6.0.063.tar.bz2 \
-SHA1= \
-download || dienow
-
 URL=http://matt.ucc.asn.au/dropbear/releases/dropbear-0.52.tar.bz2 \
 SHA1=8c1745a9b64ffae79f28e25c6fe9a8b96cac86d8 \
 download || dienow
