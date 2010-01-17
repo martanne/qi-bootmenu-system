@@ -2,11 +2,6 @@ setupfor ecore
 
 [ ! -e ./configure ] && NOCONFIGURE=y ./autogen.sh
 
-# In theory we only need ecore-file. ecore-job, ecore-txt and ecore-evas
-# however in practice ecore-evas seems to depend on on ecore-input and
-# ecore-file seems to depend on ecore-con
-# --with-iconv-link=-liconv \
-
 LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
 	--disable-simple-x11 \
 	--disable-doc \
@@ -42,9 +37,9 @@ LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=
 	--enable-ecore-evas-software-buffer \
 	--enable-ecore-evas-fb \
 	--enable-ecore-fb \
-	--enable-ecore-job \
-	--enable-ecore-txt \
-	--enable-ecore-file && 
+	--disable-ecore-job \
+	--disable-ecore-txt \
+	--disable-ecore-file && 
 make &&
 make DESTDIR="$STAGING_DIR" install || dienow
 
