@@ -54,8 +54,8 @@ SHA1= SVN_REV=77 \
 URL=svn://svn.berlios.de/tslib/trunk/tslib \
 download_svn || dienow
 
-URL=http://mirrors.zerg.biz/nongnu/freetype/freetype-2.3.9.tar.bz2 \
-SHA1=db08969cb5053879ff9e973fe6dd2c52c7ea2d4e \
+URL=http://savannah.nongnu.org/download/freetype/freetype-2.3.11.tar.bz2 \
+SHA1=693e1b4e423557975c2b2aca63559bc592533a0e \
 download || dienow
 
 URL=http://download.enlightenment.org/snapshots/2009-12-02/eina-0.9.9.063.tar.bz2 \
