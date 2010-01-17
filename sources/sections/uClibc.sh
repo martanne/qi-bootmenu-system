@@ -16,21 +16,6 @@ cp .config "$CONFIG_DIR/config-uClibc" || dienow
 UCLIBC_MAKE_FLAGS="CROSS=$CROSS KERNEL_HEADERS=$STAGING_DIR/usr/include \
 	RUNTIME_PREFIX=/ UCLIBC_LDSO_NAME=ld-uClibc $VERBOSITY"
 
-# prepare the headers files this is a pre requirement for locale generation
-
-make $UCLIBC_MAKE_FLAGS PREFIX="$STAGING_DIR/usr" DEVEL_PREFIX="/" headers
-make $UCLIBC_MAKE_FLAGS PREFIX="$STAGING_DIR/usr" DEVEL_PREFIX="/" include/bits/sysnum.h 
-
-# configure/generate just the minimal needed locales
-# UCLIBC_BUILD_MINIMAL_LOCALE doesn't seem to be present
-# in the Kconfig files but it is nevertheless used in the
-# Makefile
-
-cd extra/locale
-make clean
-make $UCLIBC_MAKE_FLAGS PREFIX="$STAGING_DIR/usr" UCLIBC_BUILD_MINIMAL_LOCALE=y DEVEL_PREFIX="/"
-cd - >/dev/null
-
 # build and install into $STAGING_DIR
 
 make $UCLIBC_MAKE_FLAGS PREFIX="$STAGING_DIR/usr" DEVEL_PREFIX="/" -j $CPUS install &&
