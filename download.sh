@@ -78,10 +78,6 @@ URL=http://download.enlightenment.org/snapshots/2009-12-02/embryo-0.9.9.063.tar.
 SHA1= \
 download || dienow
 
-URL=http://www.lua.org/ftp/lua-5.1.4.tar.gz \
-SHA1=2b11c8e60306efb7f0734b747588f57995493db7 \
-download || dienow
-
 URL=http://download.enlightenment.org/snapshots/2009-12-02/elementary-0.6.0.063.tar.bz2 \
 SHA1= \
 download || dienow
