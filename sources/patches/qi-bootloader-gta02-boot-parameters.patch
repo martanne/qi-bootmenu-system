@@ -2,7 +2,7 @@ diff --git a/src/cpu/s3c2442/gta02.c b/src/cpu/s3c2442/gta02.c
 index 32a63bf..747363b 100644
 --- a/src/cpu/s3c2442/gta02.c
 +++ b/src/cpu/s3c2442/gta02.c
-@@ -739,8 +739,9 @@ const struct board_api board_api_gta02 = {
+@@ -739,8 +739,10 @@ const struct board_api board_api_gta02 = {
  			/* NOTE offset below is replaced at runtime */
  			.offset_blocks512_if_no_partition = 0x80000 / 512,
  			.filesystem = FS_RAW,
@@ -10,6 +10,7 @@ index 32a63bf..747363b 100644
 -					      "root=/dev/mtdblock6 ",
 +			.commandline_append = "rootfstype=jffs2 "
 +					      "root=/dev/mtdblock6 "
++					      "qi-bootmenu-args=\"-i /dev/mtdblock6\" "
 +					      "lpj=498688 ",
  		},
  	},
