@@ -1,0 +1,103 @@
+From 430a9b286820ee8441378b7042b14af9cf48d1f7 Mon Sep 17 00:00:00 2001
+From: Marc Andre Tanner <mat@brain-dump.org>
+Date: Sat, 2 Jan 2010 14:11:29 +0100
+Subject: [PATCH 1/4] configure: disable check for c++ compiler
+
+Signed-off-by: Marc Andre Tanner <mat@brain-dump.org>
+---
+ configure.ac |    1 -
+ 1 files changed, 0 insertions(+), 1 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 70e0589..f79fc00 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -15,7 +15,6 @@ AC_SUBST(PACKAGE_DESCRIPTION)
+ TS_DEFAULT_FLAGS
+ 
+ # Checks for programs.
+-AC_PROG_CXX
+ AC_PROG_CC
+ AC_PROG_CPP
+ TS_CC_HIDDEN_VISIBILITY
+-- 
+1.6.5
+
+From dfada356955a7812bbcd0dd5c72545f5c494a1fb Mon Sep 17 00:00:00 2001
+From: Marc Andre Tanner <mat@brain-dump.org>
+Date: Sat, 2 Jan 2010 14:18:49 +0100
+Subject: [PATCH 2/4] linear: remove unused variables
+
+Signed-off-by: Marc Andre Tanner <mat@brain-dump.org>
+---
+ plugins/linear.c |    2 --
+ 1 files changed, 0 insertions(+), 2 deletions(-)
+
+diff --git a/plugins/linear.c b/plugins/linear.c
+index 3d39961..99c307d 100644
+--- a/plugins/linear.c
++++ b/plugins/linear.c
+@@ -113,9 +113,7 @@ TSAPI struct tslib_module_info *mod_init(struct tsdev *dev, const char *params)
+ 	struct tslib_linear *lin;
+ 	struct stat sbuf;
+ 	FILE *pcal_fd;
+-	char pcalbuf[200];
+ 	int index;
+-	char *tokptr;
+ 	char *calfile=NULL;
+ 
+ 	lin = malloc(sizeof(struct tslib_linear));
+-- 
+1.6.5
+
+From b891cb107b1c0f1ab3537e7bb2f65255a17ff790 Mon Sep 17 00:00:00 2001
+From: Marc Andre Tanner <mat@brain-dump.org>
+Date: Sat, 2 Jan 2010 14:21:15 +0100
+Subject: [PATCH 3/4] linear: remove erroneous close(2)
+
+Signed-off-by: Marc Andre Tanner <mat@brain-dump.org>
+---
+ plugins/linear.c |    1 -
+ 1 files changed, 0 insertions(+), 1 deletions(-)
+
+diff --git a/plugins/linear.c b/plugins/linear.c
+index 99c307d..87874e2 100644
+--- a/plugins/linear.c
++++ b/plugins/linear.c
+@@ -150,7 +150,6 @@ TSAPI struct tslib_module_info *mod_init(struct tsdev *dev, const char *params)
+ 		printf("\n");
+ #endif /*DEBUG*/
+ 		fclose(pcal_fd);
+-		close(pcal_fd);
+ 	}
+ 		
+ 		
+-- 
+1.6.5
+
+From 9d6c264c62b142069e7aa9bb68841dd806b56e80 Mon Sep 17 00:00:00 2001
+From: Marc Andre Tanner <mat@brain-dump.org>
+Date: Sat, 2 Jan 2010 14:23:23 +0100
+Subject: [PATCH 4/4] linear: remove useless variable initialization
+
+Signed-off-by: Marc Andre Tanner <mat@brain-dump.org>
+---
+ plugins/linear.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/plugins/linear.c b/plugins/linear.c
+index 87874e2..4fe04d3 100644
+--- a/plugins/linear.c
++++ b/plugins/linear.c
+@@ -114,7 +114,7 @@ TSAPI struct tslib_module_info *mod_init(struct tsdev *dev, const char *params)
+ 	struct stat sbuf;
+ 	FILE *pcal_fd;
+ 	int index;
+-	char *calfile=NULL;
++	char *calfile;
+ 
+ 	lin = malloc(sizeof(struct tslib_linear));
+ 	if (lin == NULL)
+-- 
+1.6.5
+
