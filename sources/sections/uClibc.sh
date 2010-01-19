@@ -39,12 +39,11 @@ make $UCLIBC_MAKE_FLAGS PREFIX="$ROOT_DIR" install_runtime
 [ -e "$STAGING_DIR/usr/lib/libc.so" ] && \
 	sed -i 's,/lib/,,g' "$STAGING_DIR/usr/lib/libc.so"
 
-# copy compiler related include files and libraries into
-# $STAGING_DIR so that the compiler wrapper (ccwrap) will
-# find it were it expects them.
+# copy compiler related include files and into $STAGING_DIR
+# so that the compiler wrapper (ccwrap) will find it were it
+# expects them.
 
 cp -r "$(dirname $(which $CC))/../cc" "$STAGING_DIR/usr" || dienow
-cp -P $(dirname $(which $CC))/../lib/libgcc* "$STAGING_DIR/usr/lib" || dienow
 
 # tell the compiler wrapper to link all further packages 
 # against the newly built libc 
