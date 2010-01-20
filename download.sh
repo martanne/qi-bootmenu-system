@@ -59,19 +59,19 @@ SHA1=693e1b4e423557975c2b2aca63559bc592533a0e \
 download || dienow
 
 URL=http://download.enlightenment.org/snapshots/2009-12-02/eina-0.9.9.063.tar.bz2 \
-SHA1= \
+SHA1=574a405bec4ea60e5f2c7e28684e5d30ae42bf92 \
 download || dienow
 
 URL=http://download.enlightenment.org/releases/eet-1.2.3.tar.bz2 \
-SHA1= \
+SHA1=10d49e3fc07c17fa5b52bd87d0ab42edc88c6286 \
 download || dienow
 
 URL=http://download.enlightenment.org/snapshots/2009-12-02/evas-0.9.9.063.tar.bz2 \
-SHA1= \
+SHA1=40ff48de8f716e84440e267219a9df8afa9c9f88 \
 download || dienow
 
 URL=http://download.enlightenment.org/snapshots/2009-12-02/ecore-0.9.9.063.tar.bz2 \
-SHA1= \
+SHA1=c35a546e578c8bd59a1cdd349f67f58f37ada048 \
 download || dienow
 
 URL=http://matt.ucc.asn.au/dropbear/releases/dropbear-0.52.tar.bz2 \
