@@ -1,0 +1,13 @@
+diff --git a/drivers/usb/gadget/s3c2410_udc.c b/drivers/usb/gadget/s3c2410_udc.c
+index e7739a6..abcf398 100644
+--- a/drivers/usb/gadget/s3c2410_udc.c
++++ b/drivers/usb/gadget/s3c2410_udc.c
+@@ -2017,8 +2017,6 @@ static int __init udc_init(void)
+ 
+ 	s3c2410_udc_debugfs_root = debugfs_create_dir(gadget_name, NULL);
+ 	if (IS_ERR(s3c2410_udc_debugfs_root)) {
+-		printk(KERN_ERR "%s: debugfs dir creation failed %ld\n",
+-			gadget_name, PTR_ERR(s3c2410_udc_debugfs_root));
+ 		s3c2410_udc_debugfs_root = NULL;
+ 	}
+ 
