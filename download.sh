@@ -50,7 +50,7 @@ URL=http://downloads.sourceforge.net/project/libpng/00-libpng-stable/1.2.40/libp
 SHA1=776cf18a799af58303590f6996f6d3aa5a7908ff \
 download || dienow
 
-SHA1= SVN_REV=77 \
+SHA1= SVN_REV=83 \
 URL=svn://svn.berlios.de/tslib/trunk/tslib \
 download_svn || dienow
 
