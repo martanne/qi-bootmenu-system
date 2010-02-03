@@ -19,7 +19,8 @@ LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=
 	--disable-assert \
 	--disable-chained-pool \
 	--enable-pass-through=$ENABLE \
-	--enable-default-mempool &&
+	--enable-default-mempool \
+	--with-internal-maximum-log-level=0 &&
 make &&
 make DESTDIR="$STAGING_DIR" install || dienow
 
