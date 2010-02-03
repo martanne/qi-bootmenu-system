@@ -12,6 +12,6 @@ case "$MACHINE" in
 esac
 
 make CPU="$CPU" CROSS_COMPILE="$CROSS" &&
-cp image/qi-$CPU*.udfu $TOP || dienow 
+cp image/qi-$CPU*.udfu $TOP/qi-$CPU.udfu || dienow
 
 cleanup qi-bootloader
