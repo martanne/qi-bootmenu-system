@@ -2,10 +2,12 @@ Qi Bootmenu System
 ==================
 
  This is a set of simple shell scripts to cross compile everything
- that is needed in order to run elementary based applications
- with the framebuffer backend. The ultimate goal is to create a
- file with all the contents of the initramfs which then can be 
- specified during kernel compilation. 
+ that is needed in order to run an evas based bootmenu application 
+ with the framebuffer backend.
+
+ The ultimate goal is to build a complete initramfs (containing
+ the bootmenu application) and kernel which can be flashed to your
+ device.
 
 Pre-Requirements
 ================
@@ -27,25 +29,25 @@ Pre-Requirements
 
  You can now either download a pre built uclibc toolchain from:
 
-  http://www.brain-dump.org/projects/qi-bootmenu-system/cross-compiler-armv4tl.tar.bz2
+  http://impactlinux.com/fwl/downloads/binaries/cross-compiler-armv4tl.tar.bz2
 
  or build one from scratch with the following instructions:
 
   1. Download and extract
 
-      http://landley.net/code/firmware/downloads/firmware-0.9.8.tar.bz2
+      http://impactlinux.com/fwl/downloads/firmware-0.9.10.tar.bz2
 
   2. Build the cross compiler
 
-      ./download.sh && ./cross-compiler.sh armv4tl
+      ./download.sh && ./simple-cross-compiler.sh armv4tl
 
-  3. Copy the build/cross-compiler-armv4tl directory to a
+  3. Copy the build/simple-cross-compiler-armv4tl directory to a
      place of your choice.
 
  Now that you have a cross toolchain add it's bin directory to
  your $PATH.
 
-  cd cross-compiler-armv4tl/bin && export PATH=`pwd`:$PATH
+  cd simple-cross-compiler-armv4tl/bin && export PATH=`pwd`:$PATH
 
  Host tools
  ----------
@@ -54,8 +56,8 @@ Pre-Requirements
  various host tools. Please make sure you have the following ones
  installed:
 
-  edje_cc git svn patch autoconf automake libtool gettext cvs 
-  wget xargs sha1sum sed find
+  git svn cvs lzop dfu-util autoconf automake libtool gettext wget
+  xargs sha1sum patch sed find
 
 Building the boot system
 ========================
@@ -71,24 +73,50 @@ Building the boot system
  By default the scripts assume 'armv4tl-' as toolchain prefix if your 
  toolchain uses something different then set the $CROSS environment 
  variable accordingly.
+
+ Configuring the build
+ ---------------------
+
+ There are a few configuration settings which can be used to tweek the
+ build system in various ways. They can be specified on the command line
+ or via the top level config file which is sourced by the other scripts.
+
+ What follows is a short descritption of the most important ones:
+
+  $MACHINE has to be set to either GTA01 or GTA02 the latter is assumed
+           the variable isn't specified
+
+  $STATIC  build qi-bootmenu statically and don't install shared 
+           libraries. This results in a slightly smaller + faster
+           initramfs. 
  
- Building
- --------
+ Building the initramfs content, kernel and bootloader
+ -----------------------------------------------------
 
- Building the whole system (all packages) is as simple as executing
- the ./build.sh shell script. If you just want to build an individual
- package then pass it as argument. For example if you just want to 
- rebuild elementary then run.
+ Building the whole system (all packages) including kernel and bootloader
+ is as simple as executing the ./build.sh shell script. This will build
+ a kernel (uImage-$MACHINE.bin) containing the whole boot system as an
+ initramfs and a slightly modified version of the bootloader Qi (qi-*.udfu).
 
-  ./build.sh elementary
+ If you just want to rebuild an individual package then pass it's name as 
+ argument. For example if you just want to rebuild qi-bootmenu then run.
 
- Generating initramfs
- --------------------
+  ./build.sh qi-bootmenu
 
- Now run ./initramfs.sh this should generate a text file (initramfs-files
- in the top level driectory) with all the content of the rootfs direcory. 
- This text file can then be specied as CONFIG_INITRAMFS_SOURCE during the 
- kernel build. 
+Installing/Flashing the boot system
+===================================
+
+ The last step should have built a kernel (uImage-$MACHINE.bin) and a
+ bootloader (qi-*.udfu) these files can be flashed in the normal way as
+ described in:
+
+  http://wiki.openmoko.org/wiki/Flashing
+
+ There are also two scripts included which should make this a straight
+ forward process. Just run the following command and your newly built
+ boot system should be installed.
+
+  ./flash-kernel.sh && ./flash-qi.sh
 
 How it all works
 ================
@@ -130,7 +158,7 @@ How it all works
 
   - ./sources/patches/$PACKAGE-*
 
-    Patches for individual patches. They are applied within setup $PACKAGE.
+    Patches for individual packages. They are applied within setup $PACKAGE.
  
   - ./build.sh
 
@@ -148,9 +176,10 @@ How it all works
     over to ./build/temp-armv4tl/$PACKAGE where it is built.
 
     The packages are then configured with something like:
- 
-     PKG_CONFIG_PATH="${STAGING_DIR}/usr/lib/pkgconfig" 
-     LDFLAGS="-L$STAGING_DIR/usr/lib" CFLAGS="-I$STAGING_DIR/usr/include" 
+
+     PKG_CONFIG_PATH="${STAGING_DIR}/usr/lib/pkgconfig"
+     CCWRAP_TOPDIR="$STAGING_DIR/usr"
+     CFLAGS="-I$STAGING_DIR/usr/include" 
      ./configure --prefix=/usr 
 
     This makes sure that the configure script and the compiler actually 
@@ -190,4 +219,26 @@ How it all works
 
     This script simply creates a tarball with the content of the rootfs 
     directory. You can copy this to your Freerunner and chroot into it to
-    test things out. 
+    test things out.
+
+Changes to vanilla Qi
+=====================
+
+ The boot system also works with the unmodified version of Qi as found in
+ the openmoko git repository.
+
+  http://git.openmoko.org/?p=qi.git
+
+ The patches which are applied are thus not strictly necessary but they have 
+ a few advantages over vanilla Qi.
+
+  - You won't have to mark your SD-card partition as not bootable via
+    noboot-$MACHINE files
+
+  - It's slightly faster because after the first AUX press no further
+    SD-card partitions are scanned Qi proceeds straight away with
+    booting from NAND
+
+  - The NAND partition is ignored by the bootmenu because Qi will pass
+    the required parameters on the kernel command line this reduces
+    boot time because mounting an jffs2 file system is slow.

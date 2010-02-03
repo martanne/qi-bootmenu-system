@@ -1,41 +1,26 @@
-# Setup
-
 # This file is a place for you to set configuration values.  This entire
 # file is optional; by default all the variables documented in this file
 # are left blank by the build.  Feel free to replace this file with your
 # own version, or to set these as environment variables on the command line.
 
-# If this is set, the build records the command lines run by each build into
-# log files in the build directory, ala "build/cmdlines.$PACKAGENAME"
+# Specify Openmoko device to build for (GTA01 or GTA02 which is the default).
+# export MACHINE=GTA02
 
-# export RECORD_COMMANDS=1
+# Build qi-bootmenu statically and don't install the shared libraries
+# in the resulting initramfs.
 
-# This may be set by the target's "details" file, but you can override it here.
-# You can set it to ext2, initramfs, or squashfs.  It defaults to squashfs
-# if blank.
+# export STATIC=1
 
-# export SYSIMAGE_TYPE=ext2
+# Build with debug flags
 
-# Set this to use symlinks instead of hard links when creating temporary copies
-# of the source packages (in setupfor).  This is slower and uses more inodes,
-# but allows the extracted source packages to live in a different filesystem
-# than the build directory.
+# export DEBUG=1
 
-# export SNAPSHOT_SYMLINK=1
+# Leave source in build/temp-$ARCH after build.
 
-# If this is set, try downloading packages from this location first.
-
-# export PREFERRED_MIRROR=http://impactlinux.com/fml/mirror
-
-# Try development versions of these packages.  (Know what you're doing if
-# you select these, it's quite possible the result won't work.)
-
-# export USE_UNSTABLE=uClibc,busybox,linux
-
-# Debugging option to leave source in build/temp-$ARCH after build.
 # export NO_CLEANUP=1
 
 # Do not strip executables useful for debugging
+
 # export NO_STRIP=1
 
 # Tell the linux kernel, uClibc, and busybox to show the actual build commands
@@ -43,7 +28,13 @@
 
 # export BUILD_VERBOSE=1
 
-# Create a tarball with the files installed by each individual package at
-# each stage of the build.
+# If this is set, try downloading packages from this location first.
 
-# export BINARY_PACKAGE_TARBALLS=1
+# export PREFERRED_MIRROR=http://impactlinux.com/fml/mirror
+
+# Set this to use symlinks instead of hard links when creating temporary copies
+# of the source packages (in setupfor).  This is slower and uses more inodes,
+# but allows the extracted source packages to live in a different filesystem
+# than the build directory.
+
+# export SNAPSHOT_SYMLINK=1
