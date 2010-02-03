@@ -39,6 +39,8 @@ then
   exit
 fi
 
+# build initramfs content
+
 build_package linux-headers
 build_package uClibc
 build_package busybox
@@ -55,4 +57,13 @@ build_package ecore
 build_package qi-bootmenu
 build_package dropbear
 
-echo "Build complete now run ./initramfs.sh"
+# copy the the root-overlay drectory over the initramfs and generate
+# a file called 'initramfs-files' which can be specified as
+# CONFIG_INITRAMFS_SOURCE during the kernel build
+
+cd "$TOP" && ./initramfs.sh
+
+# build kernel which embedds the previously built initramfs content
+
+build_package kernel
+build_package qi
