@@ -78,8 +78,8 @@ URL=http://matt.ucc.asn.au/dropbear/releases/dropbear-0.52.tar.bz2 \
 SHA1=8c1745a9b64ffae79f28e25c6fe9a8b96cac86d8 \
 download || dienow
 
-URL=http://downloads.sourceforge.net/project/strace/strace/4.5.18/strace-4.5.18.tar.bz2 \
-SHA1=50081a7201dc240299396f088abe53c07de98e4c \
+URL=http://downloads.sourceforge.net/project/strace/strace/4.5.19/strace-4.5.19.tar.bz2 \
+SHA1=5554c2fd8ffae5c1e2b289b2024aa85a0889c989 \
 download || dienow
 
 URL=http://ftp.gnu.org/gnu/gdb/gdb-7.0.tar.bz2 \
