@@ -56,8 +56,8 @@ Pre-Requirements
  various host tools. Please make sure you have the following ones
  installed:
 
-  git svn cvs lzop dfu-util autoconf automake libtool gettext wget
-  xargs sha1sum patch sed find
+  git svn cvs lzop dfu-util autoconf automake libtool gettext
+  mkimage
 
 Building the boot system
 ========================
