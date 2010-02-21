@@ -1,9 +1,10 @@
 setupfor dropbear 
 
 LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --with-shared \
+	--disable-zlib \
 	--disable-pam \
 	--enable-openpty \
-	--enable-syslog \
+	--disable-syslog \
 	--disable-shadow \
 	--disable-lastlog \
 	--disable-utmp \
@@ -14,10 +15,27 @@ LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --with-sh
 	--disable-pututline \
 	--disable-pututxline
 
-for c in INETD_MODE ENABLE_X11FWD DROPBEAR_BLOWFISH DROPBEAR_TWOFISH256 \
-		DROPBEAR_TWOFISH128 DROPBEAR_MD5_HMAC DO_MOTD DO_HOST_LOOKUP
+for c in \
+	INETD_MODE \
+	ENABLE_X11FWD \
+	ENABLE_SVR_LOCALTCPFWD \
+	ENABLE_SVR_REMOTETCPFWD \
+	ENABLE_AGENTFWD \
+	DROPBEAR_AES128 \
+	DROPBEAR_AES256 \
+	DROPBEAR_BLOWFISH \
+	DROPBEAR_TWOFISH256 \
+	DROPBEAR_TWOFISH128 \
+	DROPBEAR_ENABLE_CTR_MODE \
+	DROPBEAR_SHA1_96_HMAC \
+	DROPBEAR_MD5_HMAC \
+	DROPBEAR_DSS \
+	DO_HOST_LOOKUP \
+	DO_MOTD \
+	ENABLE_SVR_PUBKEY_AUTH \
+	SFTPSERVER_PATH
 do
-	sed -i 's,^#define '$c',/* & */,g' options.h
+	sed -i 's,^#define '$c'.*,/* & */,g' options.h
 done
 
 make PROGRAMS="dropbear dropbearkey scp" MULTI=1
