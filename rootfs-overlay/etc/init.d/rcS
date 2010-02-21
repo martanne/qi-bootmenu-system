@@ -13,7 +13,6 @@ mount -n -o remount,noatime,rw /
 
 sleep 5
 
-/etc/init.d/syslog start
 /etc/init.d/networking start
 /etc/init.d/dropbear start
 
