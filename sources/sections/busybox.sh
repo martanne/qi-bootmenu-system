@@ -1,6 +1,10 @@
 setupfor busybox
 
-make allnoconfig KCONFIG_ALLCONFIG="$CONFIG_DIR/miniconfig-busybox" &&
+cp "$CONFIG_DIR/miniconfig-busybox" config 
+
+[ ! -z "$STATIC" ] && echo CONFIG_STATIC=y >> config 
+
+make allnoconfig KCONFIG_ALLCONFIG="config" &&
 
 cp .config "$CONFIG_DIR/config-busybox" &&
 

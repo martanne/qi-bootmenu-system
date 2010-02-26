@@ -21,7 +21,7 @@ sed -i 's/^link_all_deplibs=no$/link_all_deplibs=unknown/g' libtool
 make &&
 make DESTDIR="$STAGING_DIR" install || dienow
 
-if [ -z "$STATIC" ]; then 
+if [ ! -z "$QI_BOOTMENU_SHARED" ]; then 
   cp -P $STAGING_DIR/usr/lib/libeet.so* $ROOT_DIR/usr/lib || dienow
 fi
 

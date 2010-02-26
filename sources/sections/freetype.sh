@@ -22,7 +22,7 @@ LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=
 make &&
 make DESTDIR="$STAGING_DIR" install || dienow
 
-if [ -z "$STATIC" ]; then
+if [ ! -z "$QI_BOOTMENU_SHARED" ]; then
   cp -P $STAGING_DIR/usr/lib/libfreetype.so* $ROOT_DIR/usr/lib || dienow
 fi
 

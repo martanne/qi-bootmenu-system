@@ -2,7 +2,7 @@ setupfor tslib
 
 [ ! -e ./configure ] && ./autogen.sh
 
-[ -z "$STATIC" ] && ENABLE="yes" || ENABLE="static"
+[ ! -z "$QI_BOOTMENU_SHARED" ] && ENABLE="yes" || ENABLE="static"
 
 LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
 	--enable-static \
@@ -22,7 +22,7 @@ LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=
 make &&
 make DESTDIR="$STAGING_DIR" install || dienow
 
-[ -z "$STATIC" ] && install_shared_library ts
+[ ! -z "$QI_BOOTMENU_SHARED" ] && install_shared_library ts
 
 pkgconfig_fixup_prefix ts
 libtool_fixup_libdir ts

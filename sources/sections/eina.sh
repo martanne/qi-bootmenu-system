@@ -2,7 +2,7 @@ setupfor eina
 
 [ ! -e ./configure ] && NOCONFIGURE=y ./autogen.sh
 
-[ -z "$STATIC" ] && ENABLE="yes" || ENABLE="static"
+[ ! -z "$QI_BOOTMENU_SHARED" ] && ENABLE="yes" || ENABLE="static"
 
 LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
 	--disable-cpu-mmx \
@@ -24,7 +24,7 @@ LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=
 make &&
 make DESTDIR="$STAGING_DIR" install || dienow
 
-[ -z "$STATIC" ] && install_shared_library eina
+[ ! -z "$QI_BOOTMENU_SHARED" ] && install_shared_library eina
 
 pkgconfig_fixup_prefix eina
 libtool_fixup_libdir eina

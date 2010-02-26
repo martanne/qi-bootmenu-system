@@ -2,7 +2,7 @@ setupfor evas
 
 [ ! -e ./configure ] && NOCONFIGURE=y ./autogen.sh
 
-[ -z "$STATIC" ] && ENABLE="yes" || ENABLE="static"
+[ ! -z "$QI_BOOTMENU_SHARED" ] && ENABLE="yes" || ENABLE="static"
 
 LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
 	--enable-fb=$ENABLE \
@@ -68,7 +68,7 @@ LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=
 make &&
 make DESTDIR="$STAGING_DIR" install || dienow
 
-if [ -z "$STATIC" ]; then
+if [ ! -z "$QI_BOOTMENU_SHARED" ]; then
   install_shared_library evas
   # delete all savers because we don't need them
   rm -rf "$ROOT_DIR/usr/lib/evas/modules/savers"

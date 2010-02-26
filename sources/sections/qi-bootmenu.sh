@@ -1,8 +1,8 @@
 setupfor qi-bootmenu 
 
-[ ! -z "$STATIC" ] && TARGET="static"
+[ -z "$QI_BOOTMENU_SHARED" ] && TARGET="static"
 
-LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" make $TARGET &&
+LDFLAGS="$LDFLAGS -Wl,--gc-section" CFLAGS="$CFLAGS -ffunction-sections -fdata-sections" make $TARGET &&
 
 make PREFIX=/usr DESTDIR="$ROOT_DIR" install
 

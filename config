@@ -4,12 +4,16 @@
 # own version, or to set these as environment variables on the command line.
 
 # Specify Openmoko device to build for (GTA01 or GTA02 which is the default).
+
 # export MACHINE=GTA02
 
-# Build qi-bootmenu statically and don't install the shared libraries
-# in the resulting initramfs.
+# Link all executables (busybox, kexec, dropbear statically)
 
 # export STATIC=1
+
+# Link qi-bootmenu against shared libraries
+
+# export QI_BOOTMENU_SHARED=1
 
 # Build with debug flags
 
