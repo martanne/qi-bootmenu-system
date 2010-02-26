@@ -46,12 +46,10 @@ build_package uClibc
 build_package busybox
 build_package kexec-tools
 build_package zlib
-build_package libjpeg
 build_package libpng
 build_package tslib
 build_package freetype
 build_package eina
-build_package eet
 build_package evas
 build_package ecore
 build_package qi-bootmenu

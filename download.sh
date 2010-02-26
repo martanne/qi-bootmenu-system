@@ -41,11 +41,6 @@ URL=http://www.zlib.net/zlib-1.2.3.tar.bz2 \
 SHA1=967e280f284d02284b0cd8872a8e2e04bfdc7283 \
 download || dienow
 
-URL=http://www.ijg.org/files/jpegsrc.v7.tar.gz \
-SHA1=88cced0fc3dbdbc82115e1d08abce4e9d23a4b47 \
-RENAME="s/jpegsrc\.(.*)/libjpeg-\1/" \
-download || dienow
-
 URL=http://downloads.sourceforge.net/project/libpng/00-libpng-stable/1.2.40/libpng-1.2.40.tar.bz2 \
 SHA1=776cf18a799af58303590f6996f6d3aa5a7908ff \
 download || dienow
@@ -60,10 +55,6 @@ download || dienow
 
 URL=http://download.enlightenment.org/snapshots/2009-12-02/eina-0.9.9.063.tar.bz2 \
 SHA1=574a405bec4ea60e5f2c7e28684e5d30ae42bf92 \
-download || dienow
-
-URL=http://download.enlightenment.org/releases/eet-1.2.3.tar.bz2 \
-SHA1=10d49e3fc07c17fa5b52bd87d0ab42edc88c6286 \
 download || dienow
 
 URL=http://download.enlightenment.org/snapshots/2009-12-02/evas-0.9.9.063.tar.bz2 \
@@ -86,8 +77,8 @@ URL=http://ftp.gnu.org/gnu/gdb/gdb-7.0.tar.bz2 \
 SHA1=8aed621b7ddb8c82b6ff213b56c028787db90582 \
 download || dienow
 
+#SHA1=e57005075db77e21aab0ba509f4f0fe4a48283d6 \
 URL=http://www.brain-dump.org/projects/qi-bootmenu/qi-bootmenu-0.1.tar.gz \
-SHA1=e57005075db77e21aab0ba509f4f0fe4a48283d6 \
 download || dienow
 
 URL='http://git.openmoko.org/?p=qi.git;a=snapshot;h=c38b062a609f1442e6a9e13005cfbdfd59a5ac0d;sf=tgz' \
