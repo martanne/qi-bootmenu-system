@@ -26,14 +26,20 @@ export STAGING_DIR="${TOP}/staging-dir"
 # like -nostdinc -nostdlibs -nodefaultlibs to gcc. 
 
 CFLAGS_HEADERS="-I$STAGING_DIR/usr/include"
-
+ 
 if [ -z "$DEBUG" ]; then
   CFLAGS="$CFLAGS_HEADERS -Os -pipe -march=armv4t -mtune=arm920t"
 else
   CFLAGS="$CFLAGS_HEADERS -O0 -g -ggdb -pipe -march=armv4t -mtune=arm920t"
 fi
 
+# flags for executables
+
+CFLAGS_EXE="$CFLAGS -ffunction-sections -fdata-sections"
+
 LDFLAGS=""
+
+LDFLAGS_EXE="$LDFLAGS -Wl,--gc-section"
 
 # Make sure that pkg-config uses the right paths and doesn't pull
 # in depencies from the host system.
