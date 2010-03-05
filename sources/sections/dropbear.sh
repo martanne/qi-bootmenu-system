@@ -1,6 +1,6 @@
 setupfor dropbear 
 
-LDFLAGS="$LDFLAGS_EXE" CFLAGS="$CFLAGS_EXE" ./configure $CROSS_CONFIGURE_FLAGS --with-shared \
+LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --with-shared \
 	--disable-zlib \
 	--disable-pam \
 	--enable-openpty \

@@ -4,7 +4,7 @@ setupfor kexec-tools
 
 [ ! -z "$STATIC" ] && KEXEC_LDFLAGS="-static" 
 
-LDFLAGS="$LDFLAGS_EXE $KEXEC_LDFLAGS " CFLAGS="$CFLAGS_EXE" ./configure $CROSS_CONFIGURE_FLAGS \
+LDFLAGS="$LDFLAGS $KEXEC_LDFLAGS " CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS \
 	--prefix=/usr \
 	--exec-prefix=/usr \
 	--without-zlib &&
