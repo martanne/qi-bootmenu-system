@@ -1,4 +1,2 @@
 ::sysinit:/etc/init.d/rcS
-tty1::respawn:/sbin/getty 38400 tty1
-ttySAC2::respawn:/sbin/getty 115200 ttySAC2
 null::shutdown:/bin/umount -a -r
