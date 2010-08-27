@@ -45,9 +45,10 @@ URL=http://downloads.sourceforge.net/project/libpng/01-libpng-master/1.4.3/libpn
 SHA1=82eda95439daaef6ed564b1532cf805b01759557 \
 download || dienow
 
-SHA1= SVN_REV=83 \
-URL=svn://svn.berlios.de/tslib/trunk/tslib \
-download_svn || dienow
+URL=http://github.com/kergoth/tslib/tarball/8c04294943437e4831ee33f67847b9c862620eb9 \
+SHA1=23b13aa7aa4abd24ba0acb2bd8d14044f06487b1 \
+RENAME="s/(.*)/tslib-\1.tar.gz/" \
+download || dienow
 
 URL=http://savannah.nongnu.org/download/freetype/freetype-2.3.11.tar.bz2 \
 SHA1=693e1b4e423557975c2b2aca63559bc592533a0e \
