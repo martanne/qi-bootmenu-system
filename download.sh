@@ -24,8 +24,8 @@ SHA1= \
 RENAME="s/.*h=(.*);.*/kernel-\1.tar.gz/" \
 download || dienow
 
-URL=http://www.uclibc.org/downloads/uClibc-0.9.30.2.tar.bz2 \
-SHA1=a956b1c37e3163c961dad7fdf96b6d4c7e176d1f \
+URL=http://www.uclibc.org/downloads/uClibc-0.9.31.tar.bz2 \
+SHA1=f25f70534594dffdb6b9008799a1532271178338 \
 download || dienow
 
 URL=http://busybox.net/downloads/busybox-1.16.0.tar.bz2
