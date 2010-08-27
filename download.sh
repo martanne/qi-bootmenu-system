@@ -41,8 +41,8 @@ URL=http://www.zlib.net/zlib-1.2.5.tar.bz2 \
 SHA1=543fa9abff0442edca308772d6cef85557677e02 \
 download || dienow
 
-URL=http://downloads.sourceforge.net/project/libpng/00-libpng-stable/1.2.40/libpng-1.2.40.tar.bz2 \
-SHA1=776cf18a799af58303590f6996f6d3aa5a7908ff \
+URL=http://downloads.sourceforge.net/project/libpng/01-libpng-master/1.4.3/libpng-1.4.3.tar.bz2 \
+SHA1=82eda95439daaef6ed564b1532cf805b01759557 \
 download || dienow
 
 SHA1= SVN_REV=83 \
