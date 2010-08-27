@@ -9,7 +9,7 @@
 
 # Link all executables (busybox, kexec, dropbear statically)
 
-# export STATIC=1
+export STATIC=1
 
 # Link qi-bootmenu against shared libraries
 
@@ -21,7 +21,7 @@
 
 # Leave source in build/temp-$ARCH after build.
 
-# export NO_CLEANUP=1
+export NO_CLEANUP=1
 
 # Do not strip executables useful for debugging
 
