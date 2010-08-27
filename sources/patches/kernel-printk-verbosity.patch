@@ -282,10 +282,10 @@ index afa8813..ba48b82 100644
 -- 
 1.6.5
 
-From ae52a96fc5e135feb404f35408b1262a59c0a1ff Mon Sep 17 00:00:00 2001
+From bb701ec53e1a65176d22e16560cddcfbb7a7e25e Mon Sep 17 00:00:00 2001
 From: Marc Andre Tanner <mat@brain-dump.org>
 Date: Sat, 29 Aug 2009 00:10:50 +0200
-Subject: [PATCH 5/5] printk: provide a filtering macro for printk
+Subject: [PATCH] printk: provide a filtering macro for printk
 
 The macro filters out printk messages based on a configurable verbosity
 level (CONFIG_PRINTK_VERBOSITY).
@@ -296,10 +296,10 @@ Signed-off-by: Marc Andre Tanner <mat@brain-dump.org>
  1 files changed, 34 insertions(+), 0 deletions(-)
 
 diff --git a/include/linux/kernel.h b/include/linux/kernel.h
-index c2b3047..30de584 100644
+index a2c8d5b..3f7f0cf 100644
 --- a/include/linux/kernel.h
 +++ b/include/linux/kernel.h
-@@ -242,6 +242,40 @@ asmlinkage int printk(const char * fmt, ...)
+@@ -268,6 +268,40 @@ asmlinkage int printk(const char * fmt, ...)
  asmlinkage int printk_unfiltered(const char *fmt, ...)
  	__attribute__ ((format (printf, 1, 2))) __cold;
  
@@ -337,8 +337,8 @@ index c2b3047..30de584 100644
 +
 +#endif /* CONFIG_PRINTK_VERBOSITY */
 +
- extern struct ratelimit_state printk_ratelimit_state;
- extern int printk_ratelimit(void);
+ extern int __printk_ratelimit(const char *func);
+ #define printk_ratelimit() __printk_ratelimit(__func__)
  extern bool printk_timed_ratelimit(unsigned long *caller_jiffies,
 -- 
 1.6.5
