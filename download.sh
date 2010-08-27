@@ -50,8 +50,8 @@ SHA1=23b13aa7aa4abd24ba0acb2bd8d14044f06487b1 \
 RENAME="s/(.*)/tslib-\1.tar.gz/" \
 download || dienow
 
-URL=http://savannah.nongnu.org/download/freetype/freetype-2.3.11.tar.bz2 \
-SHA1=693e1b4e423557975c2b2aca63559bc592533a0e \
+URL=http://download.savannah.gnu.org/releases/freetype/freetype-2.4.2.tar.bz2 \
+SHA1=cc257ceda2950b8c80950d780ccf3ce665a815d1 \
 download || dienow
 
 URL=http://download.enlightenment.org/snapshots/2009-12-02/eina-0.9.9.063.tar.bz2 \
