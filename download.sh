@@ -37,8 +37,8 @@ SHA1= \
 RENAME="s/.*h=(.*);.*/kexec-tools-\1.tar.gz/" \
 download || dienow
 
-URL=http://www.zlib.net/zlib-1.2.3.tar.bz2 \
-SHA1=967e280f284d02284b0cd8872a8e2e04bfdc7283 \
+URL=http://www.zlib.net/zlib-1.2.5.tar.bz2 \
+SHA1=543fa9abff0442edca308772d6cef85557677e02 \
 download || dienow
 
 URL=http://downloads.sourceforge.net/project/libpng/00-libpng-stable/1.2.40/libpng-1.2.40.tar.bz2 \
