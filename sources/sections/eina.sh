@@ -26,7 +26,6 @@ make DESTDIR="$STAGING_DIR" install || dienow
 
 [ ! -z "$QI_BOOTMENU_SHARED" ] && install_shared_library eina
 
-pkgconfig_fixup_prefix eina
 libtool_fixup_libdir eina
 
 cleanup eina

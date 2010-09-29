@@ -74,7 +74,6 @@ if [ ! -z "$QI_BOOTMENU_SHARED" ]; then
   rm -rf "$ROOT_DIR/usr/lib/evas/modules/savers"
 fi
 
-pkgconfig_fixup_prefix evas
 libtool_fixup_libdir evas
 
 cleanup evas

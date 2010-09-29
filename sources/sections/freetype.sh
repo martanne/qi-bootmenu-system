@@ -26,7 +26,6 @@ if [ ! -z "$QI_BOOTMENU_SHARED" ]; then
   cp -P $STAGING_DIR/usr/lib/libfreetype.so* $ROOT_DIR/usr/lib || dienow
 fi
 
-pkgconfig_fixup_prefix freetype 
 libtool_fixup_libdir freetype
 
 cleanup freetype

@@ -24,7 +24,6 @@ make DESTDIR="$STAGING_DIR" install || dienow
 
 [ ! -z "$QI_BOOTMENU_SHARED" ] && install_shared_library ts
 
-pkgconfig_fixup_prefix ts
 libtool_fixup_libdir ts
 
 cleanup tslib

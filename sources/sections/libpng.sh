@@ -11,7 +11,6 @@ if [ ! -z "$QI_BOOTMENU_SHARED" ]; then
   cp -P $STAGING_DIR/usr/lib/libpng*.so* $ROOT_DIR/usr/lib || dienow
 fi
 
-pkgconfig_fixup_prefix libpng
 libtool_fixup_libdir libpng
 
 cleanup libpng
