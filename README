@@ -9,45 +9,16 @@ Qi Bootmenu System
  the bootmenu application) and kernel which can be flashed to your
  device.
 
+Quick Start
+===========
+
+ In theory all you need to do is run ./build.sh which should
+ create an uImage-GTA02.bin ready to flash to your device. 
+
+ Make sure to have the pre-requirements installed.
+
 Pre-Requirements
 ================
-
- uClibc armv4tl cross toolchain
- ------------------------------
-
- The boot system is uclibc based you can therefore _not_ use the 
- openmoko toolchain. Instead you need to build your own cross
- compiler. This is however out of scope of this project.
-
- I strongly recommend you to use a toolchain from the FWL project
- 
-  http://www.landley.net/code/firmware/
-
- It is relocatable and uses a gcc wrapper script to make the gcc path 
- logic somewhat sane (if that's possible at all). It is currently 
- the only tested and supported toolchain.
-
- You can now either download a pre built uclibc toolchain from:
-
-  http://impactlinux.com/fwl/downloads/binaries/cross-compiler-armv4tl.tar.bz2
-
- or build one from scratch with the following instructions:
-
-  1. Download and extract
-
-      http://impactlinux.com/fwl/downloads/firmware-0.9.10.tar.bz2
-
-  2. Build the cross compiler
-
-      ./download.sh && ./simple-cross-compiler.sh armv4tl
-
-  3. Copy the build/simple-cross-compiler-armv4tl directory to a
-     place of your choice.
-
- Now that you have a cross toolchain add it's bin directory to
- your $PATH.
-
-  cd simple-cross-compiler-armv4tl/bin && export PATH=`pwd`:$PATH
 
  Host tools
  ----------
@@ -59,20 +30,31 @@ Pre-Requirements
   git svn cvs lzop dfu-util autoconf automake libtool gettext
   mkimage pkg-config (>= 0.23)
 
+ uClibc armv4tl cross toolchain
+ ------------------------------
+
+ The boot system is uclibc based we can therefore _not_ use the 
+ openmoko toolchain. Instead we need an uclibc based armv4tl
+ cross toolchain. Building one from scratch is however out of 
+ scope of this project.
+
+ By default the scripts download a pre built toolchain from the
+ Aboriginal Linux project.
+ 
+  http://www.landley.net/code/aboriginal/
+
+ It is relocatable and uses a gcc wrapper script to make the gcc path 
+ logic somewhat sane (if that's possible at all). It is the only tested
+ and supported toolchain.
+
+ If for whatever reason you don't want to run a pre built toolchain
+ you can run ./build.sh aboriginal which compiles one from scratch. 
+ Altneratively you can also build one according to the Aboriginal Linux
+ documentation, make sure to add the toolchains bin directory to your
+ $PATH. 
+
 Building the boot system
 ========================
-
- Environment setup
- -----------------
-
- Make sure you have your cross toolchain somewhere in your $PATH,
- if this is not the case then add it.
-
-  cd cross-compiler-armv4tl/bin && export PATH=`pwd`:$PATH
-
- By default the scripts assume 'armv4tl-' as toolchain prefix if your 
- toolchain uses something different then set the $CROSS environment 
- variable accordingly.
 
  Configuring the build
  ---------------------
@@ -88,7 +70,7 @@ Building the boot system
 
   $STATIC  build qi-bootmenu statically and don't install shared 
            libraries. This results in a slightly smaller + faster
-           initramfs. 
+           initramfs. This is enabled by default. 
  
  Building the initramfs content, kernel and bootloader
  -----------------------------------------------------

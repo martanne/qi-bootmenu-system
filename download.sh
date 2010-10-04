@@ -19,6 +19,14 @@ MIRROR_LIST=
 # a new version of a file, set SHA1= and update the URL, run ./download.sh,
 # then cut and paste the sha1 from the output and run it again to confirm.
 
+URL=http://landley.net/code/aboriginal/downloads/binaries/cross-compiler-armv4tl.tar.bz2 \
+SHA1=317e1fc1b01e915097beaefeb7f578733c651835 \
+download || dienow
+
+URL=http://www.impactlinux.com/aboriginal/downloads/aboriginal-1.0.0.tar.bz2 \
+SHA1=7eb41f7c42119712c074e0665bb1e7bd04c16e88 \
+download || dienow
+
 URL='http://git.openmoko.org/?p=kernel.git;a=snapshot;h=e4182f3551f1b8e8f8bd07a2d68e49a0ec4cd04a;sf=tgz' \
 SHA1= \
 RENAME="s/.*h=(.*);.*/kernel-\1.tar.gz/" \

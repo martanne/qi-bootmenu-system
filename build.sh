@@ -6,7 +6,16 @@ source sources/include.sh || exit 1
 
 ./download.sh || exit 1
 
-[ -z $(which "$CC") ] && echo "Compiler '$CC' not found in \$PATH." && exit 1 
+if [ -z $(which "$CC") ]; then
+  if [[ ! $(uname -m) == arm* ]]; then
+    if [ ! -d "cross-compiler-$ARCH" ]; then
+      tar xjf "$SRCDIR/cross-compiler-$ARCH.tar.bz2"
+    fi
+    export PATH="$PATH:$TOP/cross-compiler-$ARCH/bin"
+  else
+    echo "Compiler '$CC' not found in \$PATH." && exit 1
+  fi
+fi
 
 echo "=== Building"
 
