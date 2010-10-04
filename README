@@ -28,7 +28,7 @@ Pre-Requirements
  installed:
 
   git svn cvs lzop dfu-util autoconf automake libtool gettext
-  mkimage pkg-config (>= 0.23)
+  mkimage
 
  uClibc armv4tl cross toolchain
  ------------------------------

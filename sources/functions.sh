@@ -23,6 +23,15 @@ function libtool_fixup_libdir() {
   cd - > /dev/null
 }
 
+# In theory this should be controllable with the $PKG_CONFIG_SYSROOT_DIR
+# environment variable but this feature was introduced in pkg-config 0.23
+# and Debian unstable still ships with 0.22 so we hardwire the paths.
+
+function pkgconfig_fixup_prefix() {
+  find "$STAGING_DIR/usr/lib/pkgconfig" -name $1\*.pc | xargs \
+    sed -i "s,^prefix=.*$,prefix=$STAGING_DIR/usr,g"
+}
+
 function install_shared_library() {
   cp -P $STAGING_DIR/usr/lib/lib$1*.so* $ROOT_DIR/usr/lib || dienow
   if [ -d "$STAGING_DIR/usr/lib/$1" ]

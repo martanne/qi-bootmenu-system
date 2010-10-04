@@ -43,6 +43,7 @@ if [ ! -z "$QI_BOOTMENU_SHARED" ]; then
   cp -P $STAGING_DIR/usr/lib/libecore*.so* $ROOT_DIR/usr/lib || dienow
 fi
 
+pkgconfig_fixup_prefix ecore
 libtool_fixup_libdir ecore
 
 cleanup ecore
