@@ -28,7 +28,7 @@ SHA1=7eb41f7c42119712c074e0665bb1e7bd04c16e88 \
 download || dienow
 
 URL='http://git.openmoko.org/?p=kernel.git;a=snapshot;h=e4182f3551f1b8e8f8bd07a2d68e49a0ec4cd04a;sf=tgz' \
-SHA1= \
+SHA1=4ec587cd1942b1af1ba27ce5b674506e2da0b14d \
 RENAME="s/.*h=(.*);.*/kernel-\1.tar.gz/" \
 download || dienow
 
@@ -90,7 +90,7 @@ URL=http://www.brain-dump.org/projects/qi-bootmenu/qi-bootmenu-0.1.tar.gz \
 download || dienow
 
 URL='http://git.openmoko.org/?p=qi.git;a=snapshot;h=c38b062a609f1442e6a9e13005cfbdfd59a5ac0d;sf=tgz' \
-SHA1= \
+SHA1=668b69c20289b4a94393229e2e44eccde878768b \
 RENAME="s/.*h=(.*);.*/qi-bootloader-\1.tar.gz/" \
 download || dienow
 
