@@ -8,7 +8,6 @@ LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=
 	--disable-ecore-x-xcb \
 	--disable-atfile-source \
 	--disable-ecore-con \
-	--disable-ecore-config \
 	--disable-ecore-ipc \
 	--disable-abstract-sockets \
 	--disable-curl \
@@ -27,7 +26,6 @@ LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=
 	--disable-ecore-evas-direct3d \
 	--disable-ecore-evas-opengl-glew \
 	--disable-ecore-evas-software-16-ddraw \
-	--disable-ecore-evas-quartz \
 	--disable-ecore-evas-software-sdl \
 	--disable-ecore-evas-directfb \
 	--disable-ecore-evas-software-16-wince \
@@ -37,8 +35,6 @@ LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=
 	--enable-ecore-evas-software-buffer \
 	--enable-ecore-evas-fb \
 	--enable-ecore-fb \
-	--disable-ecore-job \
-	--disable-ecore-txt \
 	--disable-ecore-file && 
 make &&
 make DESTDIR="$STAGING_DIR" install || dienow

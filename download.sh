@@ -53,16 +53,16 @@ URL=http://download.savannah.gnu.org/releases/freetype/freetype-2.4.2.tar.bz2 \
 SHA1=cc257ceda2950b8c80950d780ccf3ce665a815d1 \
 download || dienow
 
-URL=http://download.enlightenment.org/snapshots/2009-12-02/eina-0.9.9.063.tar.bz2 \
-SHA1=574a405bec4ea60e5f2c7e28684e5d30ae42bf92 \
+URL=http://download.enlightenment.org/releases/eina-1.0.0.beta.tar.bz2 \
+SHA1=a02474ae627f3a20cae5439f39c631c0447ae7d5 \
 download || dienow
 
-URL=http://download.enlightenment.org/snapshots/2009-12-02/evas-0.9.9.063.tar.bz2 \
-SHA1=40ff48de8f716e84440e267219a9df8afa9c9f88 \
+URL=http://download.enlightenment.org/releases/evas-1.0.0.beta.tar.bz2 \
+SHA1=0bdef4fdeb3a0a787771f8ac044e2354a1937214 \
 download || dienow
 
-URL=http://download.enlightenment.org/snapshots/2009-12-02/ecore-0.9.9.063.tar.bz2 \
-SHA1=c35a546e578c8bd59a1cdd349f67f58f37ada048 \
+URL=http://download.enlightenment.org/releases/ecore-1.0.0.beta.tar.bz2 \
+SHA1=57d9ed899f0581504d64583708de58da076d7d64 \
 download || dienow
 
 URL=http://matt.ucc.asn.au/dropbear/releases/dropbear-0.52.tar.bz2 \

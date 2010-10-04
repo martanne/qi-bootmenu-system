@@ -11,14 +11,11 @@ LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=
 	--disable-cpu-altivec \
 	--disable-magic-debug \
 	--disable-doc \
-	--disable-pthread \
 	--disable-tests \
 	--disable-benchmark \
-	--disable-fixed-bitmap \
 	--disable-safety-checks \
 	--disable-assert \
-	--disable-chained-pool \
-	--enable-pass-through=$ENABLE \
+	--disable-mempool-one-big \
 	--enable-default-mempool \
 	--with-internal-maximum-log-level=0 &&
 make &&

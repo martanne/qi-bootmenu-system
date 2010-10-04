@@ -7,19 +7,16 @@ setupfor evas
 LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=/usr \
 	--enable-fb=$ENABLE \
 	--disable-directfb \
-	--disable-sdl \
 	--enable-buffer=$ENABLE	\
 	--disable-evas-cserve \
 	--enable-static-software-generic \
 	--disable-software-ddraw \
-	--disable-software-qtopia \
 	--disable-software-xlib	\
 	--disable-software-16-x11 \
 	--disable-software-xcb \
 	--disable-gl-x11 \
 	--disable-xrender-x11 \
 	--disable-xrender-xcb \
-	--disable-glitz-x11 \
 	--disable-image-loader-eet \
 	--disable-image-loader-edb \
 	--disable-image-loader-gif \
@@ -29,6 +26,13 @@ LDFLAGS="$LDFLAGS" CFLAGS="$CFLAGS" ./configure $CROSS_CONFIGURE_FLAGS --prefix=
 	--disable-image-loader-tiff \
 	--disable-image-loader-xpm \
 	--disable-image-loader-svg \
+	--disable-image-loader-bmp \
+	--disable-image-loader-tga \
+	--disable-pthreads \
+	--disable-pipe-render \
+	--disable-async-render \
+	--disable-async-events \
+	--disable-async-preload \
 	--enable-cpu-c \
 	--disable-evas-magic-debug \
 	--disable-fontconfig \

@@ -1,12 +1,26 @@
-diff -ruN ecore-r40853.orig/src/lib/ecore/ecore_main.c ecore-r40853/src/lib/ecore/ecore_main.c
---- ecore-r40853.orig/src/lib/ecore/ecore_main.c	2009-05-31 16:27:25.000000000 +0200
-+++ ecore-r40853/src/lib/ecore/ecore_main.c	2009-05-31 19:58:56.000000000 +0200
-@@ -337,7 +337,7 @@
-    Ecore_Fd_Handler *fdh;
+From 0b7a76b531f11f48a9ff1854f95f77e8f4212503 Mon Sep 17 00:00:00 2001
+From: Marc Andre Tanner <mat@brain-dump.org>
+Date: Mon, 4 Oct 2010 12:59:19 +0200
+Subject: [PATCH] ecore: replace finite with isfinite the latter is C99 and POSIX
+
+Signed-off-by: Marc Andre Tanner <mat@brain-dump.org>
+---
+ src/lib/ecore/ecore_main.c |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/src/lib/ecore/ecore_main.c b/src/lib/ecore/ecore_main.c
+index de507da..a93d729 100644
+--- a/src/lib/ecore/ecore_main.c
++++ b/src/lib/ecore/ecore_main.c
+@@ -853,7 +853,7 @@ _ecore_main_select(double timeout)
+    int            ret;
  
     t = NULL;
--   if ((!finite(timeout)) || (timeout == 0.0))  /* finite() tests for NaN, too big, too small, and infinity.  */
-+   if ((!isfinite(timeout)) || (timeout == 0.0))  /* finite() tests for NaN, too big, too small, and infinity.  */
+-   if ((!finite(timeout)) || (timeout == 0.0)) /* finite() tests for NaN, too big, too small, and infinity.  */
++   if ((!isfinite(timeout)) || (timeout == 0.0)) /* isfinite() tests for NaN, too big, too small, and infinity.  */
       {
- 	tv.tv_sec = 0;
- 	tv.tv_usec = 0;
+         tv.tv_sec = 0;
+         tv.tv_usec = 0;
+-- 
+1.6.5
+

@@ -1,0 +1,26 @@
+From 0b5455f594112eb9b912643c0ab4c10ae990546e Mon Sep 17 00:00:00 2001
+From: cedric <cedric@7cbeb6ba-43b4-40fd-8cce-4c39aea84d33>
+Date: Mon, 4 Oct 2010 09:35:06 +0000
+Subject: [PATCH 1/2] 	* ecore: fix build without X.
+
+git-svn-id: http://svn.enlightenment.org/svn/e/trunk/ecore@53015 7cbeb6ba-43b4-40fd-8cce-4c39aea84d33
+---
+ src/lib/ecore_evas/ecore_evas_x.c |    3 +--
+ 1 files changed, 1 insertions(+), 2 deletions(-)
+
+diff --git a/src/lib/ecore_evas/ecore_evas_x.c b/src/lib/ecore_evas/ecore_evas_x.c
+index 5f29678..393e6f1 100644
+--- a/src/lib/ecore_evas/ecore_evas_x.c
++++ b/src/lib/ecore_evas/ecore_evas_x.c
+@@ -4468,7 +4468,6 @@ ecore_evas_x11_leader_default_set(Ecore_Evas *ee)
+ #else
+    return;
+    ee = NULL;
+-   win = 0;
+-#endif   
++#endif
+ }
+ 
+-- 
+1.6.5
+

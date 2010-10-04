@@ -1,0 +1,26 @@
+From 113e476f330c74f83bb7dc496dcbb31c5c677338 Mon Sep 17 00:00:00 2001
+From: Marc Andre Tanner <mat@brain-dump.org>
+Date: Mon, 4 Oct 2010 14:56:45 +0200
+Subject: [PATCH] eina: calculate size of wchar_t based on wchar.h not stddef.h
+
+Signed-off-by: Marc Andre Tanner <mat@brain-dump.org>
+---
+ configure.ac |    2 +-
+ 1 files changed, 1 insertions(+), 1 deletions(-)
+
+diff --git a/configure.ac b/configure.ac
+index 4ed3ee1..9e20360 100644
+--- a/configure.ac
++++ b/configure.ac
+@@ -302,7 +302,7 @@ AC_CHECK_HEADER([stdint.h],
+ 		[EINA_CONFIGURE_HAVE_STDINT_H="#define EINA_HAVE_STDINT_H"])
+ AC_SUBST(EINA_CONFIGURE_HAVE_STDINT_H)
+ 
+-AC_CHECK_SIZEOF(wchar_t)
++AC_CHECK_SIZEOF([wchar_t],[],[#include <wchar.h>])
+ EINA_SIZEOF_WCHAR_T=$ac_cv_sizeof_wchar_t
+ AC_SUBST(EINA_SIZEOF_WCHAR_T)
+ 
+-- 
+1.6.5
+
