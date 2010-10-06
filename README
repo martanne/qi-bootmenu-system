@@ -15,43 +15,7 @@ Quick Start
  In theory all you need to do is run ./build.sh which should
  create an uImage-GTA02.bin ready to flash to your device. 
 
- Make sure to have the pre-requirements installed.
-
-Pre-Requirements
-================
-
- Host tools
- ----------
-
- The build scripts are currently not self contained they require
- various host tools. Please make sure you have the following ones
- installed:
-
-  git svn cvs lzop dfu-util autoconf automake libtool gettext
-  mkimage
-
- uClibc armv4tl cross toolchain
- ------------------------------
-
- The boot system is uclibc based we can therefore _not_ use the 
- openmoko toolchain. Instead we need an uclibc based armv4tl
- cross toolchain. Building one from scratch is however out of 
- scope of this project.
-
- By default the scripts download a pre built toolchain from the
- Aboriginal Linux project.
- 
-  http://www.landley.net/code/aboriginal/
-
- It is relocatable and uses a gcc wrapper script to make the gcc path 
- logic somewhat sane (if that's possible at all). It is the only tested
- and supported toolchain.
-
- If for whatever reason you don't want to run a pre built toolchain
- you can run ./build.sh aboriginal which compiles one from scratch. 
- Altneratively you can also build one according to the Aboriginal Linux
- documentation, make sure to add the toolchains bin directory to your
- $PATH. 
+  ./build.sh && ./flash-kernel.sh && ./flash-qi.sh
 
 Building the boot system
 ========================
@@ -102,6 +66,32 @@ Installing/Flashing the boot system
 
 How it all works
 ================
+
+ uClibc armv4tl cross toolchain
+ ------------------------------
+
+ The boot system is uclibc based we can therefore _not_ use the 
+ openmoko toolchain. Instead we need an uclibc based armv4tl
+ cross toolchain. Building one from scratch is however out of 
+ scope of this project.
+
+ By default the scripts download a pre built toolchain from the
+ Aboriginal Linux project.
+ 
+  http://www.landley.net/code/aboriginal/
+
+ It is relocatable and uses a gcc wrapper script to make the gcc path 
+ logic somewhat sane (if that's possible at all). It is the only tested
+ and supported toolchain.
+
+ If for whatever reason you don't want to run a pre built toolchain
+ you can run ./build.sh aboriginal which compiles one from scratch. 
+ Altneratively you can also build one according to the Aboriginal Linux
+ documentation, make sure to add the toolchains bin directory to your
+ $PATH. 
+
+ Build scripts
+ -------------
 
  The basic idea is to first install everything into a $STAGING_DIR and then
  selectively copy the required bits over to $ROOT_DIR. In the end the

@@ -4,6 +4,11 @@
 
 source sources/include.sh || exit 1
 
+for tool in lzop dfu-util autoconf automake libtool gettext mkimage
+do
+  [ -z $(which "$tool") ] && echo "$tool not found in \$PATH" && exit 1
+done
+
 ./download.sh || exit 1
 
 if [ -z $(which "$CC") ]; then
