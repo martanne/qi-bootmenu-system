@@ -85,9 +85,8 @@ URL=http://ftp.gnu.org/gnu/gdb/gdb-7.0.tar.bz2 \
 SHA1=8aed621b7ddb8c82b6ff213b56c028787db90582 \
 download || dienow
 
-URL=http://repo.or.cz/w/qi-bootmenu.git/snapshot/5cb4e35904ae0084ac8bddaeab285ab744f3b0bf.tar.gz \
-SHA1= \
-RENAME="s/(.*)/qi-bootmenu-\1/" \
+URL=http://www.brain-dump.org/projects/qi-bootmenu/qi-bootmenu-0.2.tar.gz \
+SHA1=a6db655a22ecd274242faae2324036c1e7229d9f \
 download || dienow
 
 URL='http://git.openmoko.org/?p=qi.git;a=snapshot;h=c38b062a609f1442e6a9e13005cfbdfd59a5ac0d;sf=tgz' \
