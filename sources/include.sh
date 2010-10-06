@@ -43,7 +43,10 @@ LDFLAGS="-Wl,--gc-section"
 # in depencies from the host system.
 export PKG_CONFIG_PATH="${STAGING_DIR}/usr/lib/pkgconfig"
 export PKG_CONFIG_LIBDIR="${STAGING_DIR}/usr/lib/pkgconfig"
-export PKG_CONFIG_SYSROOT_DIR="${STAGING_DIR}"
+# only works with pkg-config >= 0.23 but because we have a hack
+# in place to make it work with older pkg-config versions disable
+# it here for now
+#export PKG_CONFIG_SYSROOT_DIR="${STAGING_DIR}"
 
 # check if we are building natively or if we are cross compiling
 
