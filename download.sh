@@ -23,7 +23,7 @@ URL=http://landley.net/code/aboriginal/downloads/binaries/cross-compiler-armv4tl
 SHA1=317e1fc1b01e915097beaefeb7f578733c651835 \
 download || dienow
 
-URL=http://www.impactlinux.com/aboriginal/downloads/aboriginal-1.0.0.tar.bz2 \
+URL=http://landley.net/code//aboriginal/downloads/aboriginal-1.0.0.tar.bz2 \
 SHA1=7eb41f7c42119712c074e0665bb1e7bd04c16e88 \
 download || dienow
 
